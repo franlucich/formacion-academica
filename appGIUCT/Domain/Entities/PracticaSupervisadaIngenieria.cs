@@ -7,7 +7,7 @@ namespace appGIUCT.Domain.Entities
             tutor = null;
         }
         
-        public Persona docenteSupervisor {get; set;}
-        public Persona tutor {get; set;}
+        public Person docenteSupervisor {get; set;}
+        public Person tutor {get; set;}
     }
 }

@@ -8,7 +8,7 @@ namespace appGIUCT.Domain.Entities
             tipo = "";
         }
         
-        public persona director {get; set;}
+        public Person director {get; set;}
         public string fuenteFinanciamiento {get; set;}
         public string tipo {get; set;}
     }

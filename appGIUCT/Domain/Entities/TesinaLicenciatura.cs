@@ -7,7 +7,7 @@ namespace appGIUCT.Domain.Entities
             fuenteFinanciamiento = "";
         }
         
-        public Persona director {get; set;}
+        public Person director {get; set;}
         public string fuenteFinanciamiento {get; set;}
 
     }

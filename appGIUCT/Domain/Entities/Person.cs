@@ -10,8 +10,8 @@ namespace appGIUCT.Domain.Entities
             telefono =0;
             celular =0;
             direccionPostal = 0;
-            emailPersonal = 0;
-            emailInsitucional = 0;
+            emailPersonal = "";
+            emailInsitucional = "";
             horasSemInvestigadas = 0;
         }
     
