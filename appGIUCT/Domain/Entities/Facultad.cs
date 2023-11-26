@@ -7,5 +7,8 @@ namespace appGIUCT.Domain.Entities
         }
         public string nombre {get; set;}
 
+        public Universidad universidad {get; set;}
+        public int pkUniversidad {get; set;}
+
     }
 }

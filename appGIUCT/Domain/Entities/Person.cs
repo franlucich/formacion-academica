@@ -13,6 +13,7 @@ namespace appGIUCT.Domain.Entities
             emailPersonal = "";
             emailInsitucional = "";
             horasSemInvestigadas = 0;
+            iniciativaDeInvestigacions = new List<IniciativaDeInvestigacion>();
         }
     
         public string Nombre { get; set; }
@@ -28,6 +29,14 @@ namespace appGIUCT.Domain.Entities
         public string emailPersonal {get; set;}
         public string emailInsitucional {get; set;}
         public int horasSemInvestigadas{get; set;}
+
+        public List<IniciativaDeInvestigacion> iniciativaDeInvestigacions {get; set;}
+        public List<Pid> pids {get; set;}
+        public List<FormacionAcademica> formacionAcademicas {get; set;}
+
+
+
+
 
     }
 }

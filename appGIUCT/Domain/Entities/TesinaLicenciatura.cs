@@ -1,6 +1,6 @@
 namespace appGIUCT.Domain.Entities
 {
-    public class TesinaLicenciatura : FormacionAcademica
+    public class TesinaLicenciatura : IEntity
     {
         public TesinaLicenciatura() {
             director = null;
@@ -9,6 +9,9 @@ namespace appGIUCT.Domain.Entities
         
         public Person director {get; set;}
         public string fuenteFinanciamiento {get; set;}
+        public FormacionAcademica formacionAcademica { get; set; }
+        public int pkFormacionAcademica { get; set; }
+
 
     }
 }

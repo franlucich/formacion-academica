@@ -1,6 +1,6 @@
 namespace appGIUCT.Domain.Entities
 {
-    public class PracticaProfesionalizante : FormacionAcademica
+    public class PracticaProfesionalizante : IEntity
     {
         public PracticaProfesionalizante() {
             docente = null;
@@ -9,6 +9,8 @@ namespace appGIUCT.Domain.Entities
         
         public Person docente {get; set;}
         public Person tutor {get; set;}
+        public FormacionAcademica formacionAcademica { get; set; }
+        public int pkFormacionAcademica { get; set; }
 
     }
 }

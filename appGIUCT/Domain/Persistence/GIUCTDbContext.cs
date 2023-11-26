@@ -35,9 +35,13 @@ public class GIUCTDbContext : DbContext
     optionsBuilder.UseMySql("server=localhost;port=3309;database=FormA;user=root;password=Qzcb1357-",
         new MySqlServerVersion(new Version(8, 0, 34)));  
     }
-      protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
+     protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<FormacionAcademica>()
+        .HasOne(fa => fa.Pid)
+        .WithOne()
+        .HasForeignKey<Pid>(pid => pid.pkFormacionAcademica);
+}
 
-    }
 
 }

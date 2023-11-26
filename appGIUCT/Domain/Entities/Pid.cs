@@ -9,6 +9,7 @@ namespace appGIUCT.Domain.Entities
             titulo = "";
             tipo = "";
             estado = "";
+            person = new List<Person>();
         }
         
         public int codigo {get; set;}
@@ -19,5 +20,9 @@ namespace appGIUCT.Domain.Entities
         public string titulo {get; set;}
         public string tipo {get; set;}
         public string estado {get; set; }
+        public List<Person> person {get; set;}
+
+        public FormacionAcademica formacionAcademica {get; set; }
+        public int pkFormacionAcademica {get; set;}
     }
 }

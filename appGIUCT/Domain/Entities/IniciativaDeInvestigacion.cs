@@ -18,5 +18,11 @@ namespace appGIUCT.Domain.Entities
         public DateTime fechaInicio {get; set;}
         public string titulo {get; set;}
 
+        public List<Person> person {get; set;}
+        
+        public FormacionAcademica formacionAcademica {get; set; }
+        
+
+
     }
 }

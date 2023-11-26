@@ -1,6 +1,6 @@
 namespace appGIUCT.Domain.Entities
 {
-    public class ProyectoFinalIngenieria : FormacionAcademica
+    public class ProyectoFinalIngenieria : IEntity
     {
         public ProyectoFinalIngenieria() {
             director = null;
@@ -9,6 +9,9 @@ namespace appGIUCT.Domain.Entities
 
         public Person director {get; set; }
         public string fuenteFinanciemiento {get; set;}
+        public FormacionAcademica formacionAcademica { get; set; }
+        public int pkFormacionAcademica { get; set; }
+
 
     }
 }
