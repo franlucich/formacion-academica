@@ -1,0 +1,7 @@
+C:\Users\ivan1\Desktop\formacion-academica\appGIUCT\obj\Debug\net7.0\appGIUCT.csproj.AssemblyReference.cache
+C:\Users\ivan1\Desktop\formacion-academica\appGIUCT\obj\Debug\net7.0\appGIUCT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ivan1\Desktop\formacion-academica\appGIUCT\obj\Debug\net7.0\appGIUCT.AssemblyInfoInputs.cache
+C:\Users\ivan1\Desktop\formacion-academica\appGIUCT\obj\Debug\net7.0\appGIUCT.AssemblyInfo.cs
+C:\Users\ivan1\Desktop\formacion-academica\appGIUCT\obj\Debug\net7.0\appGIUCT.csproj.CoreCompileInputs.cache
+C:\Users\ivan1\Desktop\formacion-academica\appGIUCT\obj\Debug\net7.0\appGIUCT.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ivan1\Desktop\formacion-academica\appGIUCT\obj\Debug\net7.0\appGIUCT.MvcApplicationPartsAssemblyInfo.cache
