@@ -20,82 +20,60 @@ namespace appGIUCT.Migrations
 
             modelBuilder.Entity("FormacionAcademicaPerson", b =>
                 {
-                    b.Property<int>("formacionAcademicasId")
+                    b.Property<int>("FormacionesAcademicasId")
                         .HasColumnType("int");
 
-                    b.Property<int>("personId")
+                    b.Property<int>("personaId")
                         .HasColumnType("int");
 
-                    b.HasKey("formacionAcademicasId", "personId");
+                    b.HasKey("FormacionesAcademicasId", "personaId");
 
-                    b.HasIndex("personId");
+                    b.HasIndex("personaId");
 
-                    b.ToTable("FormacionAcademicaPerson");
+                    b.ToTable("PersonFormacionAcademica", (string)null);
                 });
 
-            modelBuilder.Entity("IniciativaDeInvestigacionPerson", b =>
+            modelBuilder.Entity("PersonaIniciat", b =>
                 {
-                    b.Property<int>("iniciativaDeInvestigacionsId")
+                    b.Property<int>("PersonaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("personId")
+                    b.Property<int>("pkIniciativa")
                         .HasColumnType("int");
 
-                    b.HasKey("iniciativaDeInvestigacionsId", "personId");
+                    b.Property<int?>("IniciativaDeInvestigacionId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("personId");
+                    b.Property<string>("Rol")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.ToTable("IniciativaDeInvestigacionPerson");
+                    b.HasKey("PersonaId", "pkIniciativa");
+
+                    b.HasIndex("IniciativaDeInvestigacionId");
+
+                    b.HasIndex("pkIniciativa");
+
+                    b.ToTable("PersonaIniciat");
                 });
 
-            modelBuilder.Entity("PersonPid", b =>
+            modelBuilder.Entity("PersonaPID", b =>
                 {
-                    b.Property<int>("personId")
+                    b.Property<int>("PersonaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("pidsId")
+                    b.Property<int>("PIDId")
                         .HasColumnType("int");
 
-                    b.HasKey("personId", "pidsId");
+                    b.Property<string>("Rol")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.HasIndex("pidsId");
+                    b.HasKey("PersonaId", "PIDId");
 
-                    b.ToTable("PersonPid");
-                });
+                    b.HasIndex("PIDId");
 
-            modelBuilder.Entity("appGIUCT.Domain.Entities.EnsayoCatedra", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("docenteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("formacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("pkFormacionAcademica")
-                        .HasColumnType("int");
-
-                    b.Property<int>("tutorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("docenteId");
-
-                    b.HasIndex("formacionAcademicaId");
-
-                    b.HasIndex("tutorId");
-
-                    b.ToTable("EnsayoCatedra");
+                    b.ToTable("PersonaPID");
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.Facultad", b =>
@@ -162,17 +140,21 @@ namespace appGIUCT.Migrations
 
                     b.HasIndex("facultadId");
 
-                    b.ToTable("FormacionAcademica");
+                    b.ToTable((string)null);
+
+                    b.UseTpcMappingStrategy();
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.IniciativaDeInvestigacion", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("DirectorId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -197,7 +179,7 @@ namespace appGIUCT.Migrations
                     b.Property<DateTime>("fechaInicio")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("formacionAcademicaId")
+                    b.Property<int>("pkFormacionAcademica")
                         .HasColumnType("int");
 
                     b.Property<string>("titulo")
@@ -206,7 +188,7 @@ namespace appGIUCT.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("formacionAcademicaId");
+                    b.HasIndex("DirectorId");
 
                     b.ToTable("IniciativaDeInvestigacion");
                 });
@@ -230,6 +212,9 @@ namespace appGIUCT.Migrations
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<int?>("PidId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -259,6 +244,8 @@ namespace appGIUCT.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PidId");
+
                     b.ToTable("Person");
                 });
 
@@ -270,6 +257,9 @@ namespace appGIUCT.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("DirectorId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -294,9 +284,6 @@ namespace appGIUCT.Migrations
                     b.Property<DateTime>("fechaInicio")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("formacionAcademicaId")
-                        .HasColumnType("int");
-
                     b.Property<int>("pkFormacionAcademica")
                         .HasColumnType("int");
 
@@ -310,188 +297,12 @@ namespace appGIUCT.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("formacionAcademicaId");
+                    b.HasIndex("DirectorId");
 
                     b.HasIndex("pkFormacionAcademica")
                         .IsUnique();
 
                     b.ToTable("Pid");
-                });
-
-            modelBuilder.Entity("appGIUCT.Domain.Entities.PracticaProfesionalizante", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("docenteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("formacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("pkFormacionAcademica")
-                        .HasColumnType("int");
-
-                    b.Property<int>("tutorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("docenteId");
-
-                    b.HasIndex("formacionAcademicaId");
-
-                    b.HasIndex("tutorId");
-
-                    b.ToTable("PracticaProfesionalizante");
-                });
-
-            modelBuilder.Entity("appGIUCT.Domain.Entities.PracticaSupervisadaIngenieria", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("docenteSupervisorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("formacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("pkFormacionAcademica")
-                        .HasColumnType("int");
-
-                    b.Property<int>("tutorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("docenteSupervisorId");
-
-                    b.HasIndex("formacionAcademicaId");
-
-                    b.HasIndex("tutorId");
-
-                    b.ToTable("PracticaSupervisadaIngenieria");
-                });
-
-            modelBuilder.Entity("appGIUCT.Domain.Entities.ProyectoFinalIngenieria", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("directorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("formacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("fuenteFinanciemiento")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("pkFormacionAcademica")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("directorId");
-
-                    b.HasIndex("formacionAcademicaId");
-
-                    b.ToTable("ProyectoFinalIngenieria");
-                });
-
-            modelBuilder.Entity("appGIUCT.Domain.Entities.TesinaLicenciatura", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("directorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("formacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("fuenteFinanciamiento")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("pkFormacionAcademica")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("directorId");
-
-                    b.HasIndex("formacionAcademicaId");
-
-                    b.ToTable("TesinaLicenciatura");
-                });
-
-            modelBuilder.Entity("appGIUCT.Domain.Entities.TesisPosgrado", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("directorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("formacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("fuenteFinanciamiento")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("pkFormacionAcademica")
-                        .HasColumnType("int");
-
-                    b.Property<string>("tipo")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("directorId");
-
-                    b.HasIndex("formacionAcademicaId");
-
-                    b.ToTable("TesisPosgrado");
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.Universidad", b =>
@@ -515,82 +326,170 @@ namespace appGIUCT.Migrations
                     b.ToTable("Universidades");
                 });
 
+            modelBuilder.Entity("appGIUCT.Domain.Entities.EnsayoCatedra", b =>
+                {
+                    b.HasBaseType("appGIUCT.Domain.Entities.FormacionAcademica");
+
+                    b.Property<int>("docenteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("tutorId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("docenteId");
+
+                    b.HasIndex("tutorId");
+
+                    b.ToTable("EnsayoCatedra");
+                });
+
+            modelBuilder.Entity("appGIUCT.Domain.Entities.PracticaProfesionalizante", b =>
+                {
+                    b.HasBaseType("appGIUCT.Domain.Entities.FormacionAcademica");
+
+                    b.Property<int>("docenteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("tutorId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("docenteId");
+
+                    b.HasIndex("tutorId");
+
+                    b.ToTable("PracticaProfesionalizante");
+                });
+
+            modelBuilder.Entity("appGIUCT.Domain.Entities.PracticaSupervisadaIngenieria", b =>
+                {
+                    b.HasBaseType("appGIUCT.Domain.Entities.FormacionAcademica");
+
+                    b.Property<int>("docenteSupervisorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("tutorId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("docenteSupervisorId");
+
+                    b.HasIndex("tutorId");
+
+                    b.ToTable("PracticaSupervisadaIngenieria");
+                });
+
+            modelBuilder.Entity("appGIUCT.Domain.Entities.ProyectoFinalIngenieria", b =>
+                {
+                    b.HasBaseType("appGIUCT.Domain.Entities.FormacionAcademica");
+
+                    b.Property<int>("directorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("fuenteFinanciemiento")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasIndex("directorId");
+
+                    b.ToTable("ProyectoFinalIngenieria");
+                });
+
+            modelBuilder.Entity("appGIUCT.Domain.Entities.TesinaLicenciatura", b =>
+                {
+                    b.HasBaseType("appGIUCT.Domain.Entities.FormacionAcademica");
+
+                    b.Property<int>("directorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("fuenteFinanciamiento")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasIndex("directorId");
+
+                    b.ToTable("TesinaLicenciatura");
+                });
+
+            modelBuilder.Entity("appGIUCT.Domain.Entities.TesisPosgrado", b =>
+                {
+                    b.HasBaseType("appGIUCT.Domain.Entities.FormacionAcademica");
+
+                    b.Property<int>("directorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("fuenteFinanciamiento")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("tipo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasIndex("directorId");
+
+                    b.ToTable("TesisPosgrado");
+                });
+
             modelBuilder.Entity("FormacionAcademicaPerson", b =>
                 {
                     b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", null)
                         .WithMany()
-                        .HasForeignKey("formacionAcademicasId")
+                        .HasForeignKey("FormacionesAcademicasId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("appGIUCT.Domain.Entities.Person", null)
                         .WithMany()
-                        .HasForeignKey("personId")
+                        .HasForeignKey("personaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("IniciativaDeInvestigacionPerson", b =>
+            modelBuilder.Entity("PersonaIniciat", b =>
                 {
                     b.HasOne("appGIUCT.Domain.Entities.IniciativaDeInvestigacion", null)
-                        .WithMany()
-                        .HasForeignKey("iniciativaDeInvestigacionsId")
+                        .WithMany("Integrantes")
+                        .HasForeignKey("IniciativaDeInvestigacionId");
+
+                    b.HasOne("appGIUCT.Domain.Entities.Person", "person")
+                        .WithMany("IIComoIntegrante")
+                        .HasForeignKey("PersonaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.Person", null)
-                        .WithMany()
-                        .HasForeignKey("personId")
+                    b.HasOne("appGIUCT.Domain.Entities.IniciativaDeInvestigacion", "iniciativaDeInvestigacion")
+                        .WithMany("persona")
+                        .HasForeignKey("pkIniciativa")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("iniciativaDeInvestigacion");
+
+                    b.Navigation("person");
                 });
 
-            modelBuilder.Entity("PersonPid", b =>
+            modelBuilder.Entity("PersonaPID", b =>
                 {
-                    b.HasOne("appGIUCT.Domain.Entities.Person", null)
-                        .WithMany()
-                        .HasForeignKey("personId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("appGIUCT.Domain.Entities.Pid", "PID")
+                        .WithMany("Integrantes")
+                        .HasForeignKey("PIDId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.Pid", null)
-                        .WithMany()
-                        .HasForeignKey("pidsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("appGIUCT.Domain.Entities.EnsayoCatedra", b =>
-                {
-                    b.HasOne("appGIUCT.Domain.Entities.Person", "docente")
-                        .WithMany()
-                        .HasForeignKey("docenteId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("appGIUCT.Domain.Entities.Person", "person")
+                        .WithMany("PIDsComoIntegrante")
+                        .HasForeignKey("PersonaId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", "formacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("formacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("PID");
 
-                    b.HasOne("appGIUCT.Domain.Entities.Person", "tutor")
-                        .WithMany()
-                        .HasForeignKey("tutorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("docente");
-
-                    b.Navigation("formacionAcademica");
-
-                    b.Navigation("tutor");
+                    b.Navigation("person");
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.Facultad", b =>
                 {
                     b.HasOne("appGIUCT.Domain.Entities.Universidad", "universidad")
-                        .WithMany()
+                        .WithMany("facultades")
                         .HasForeignKey("universidadId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -611,43 +510,52 @@ namespace appGIUCT.Migrations
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.IniciativaDeInvestigacion", b =>
                 {
-                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", "formacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("formacionAcademicaId")
+                    b.HasOne("appGIUCT.Domain.Entities.Person", "Director")
+                        .WithMany("iniciativaDeInvestigacions")
+                        .HasForeignKey("DirectorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", null)
+                        .WithOne("IniciativaDeInvestigacion")
+                        .HasForeignKey("appGIUCT.Domain.Entities.IniciativaDeInvestigacion", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("formacionAcademica");
+                    b.Navigation("Director");
+                });
+
+            modelBuilder.Entity("appGIUCT.Domain.Entities.Person", b =>
+                {
+                    b.HasOne("appGIUCT.Domain.Entities.Pid", null)
+                        .WithMany("person")
+                        .HasForeignKey("PidId");
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.Pid", b =>
                 {
-                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", "formacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("formacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("appGIUCT.Domain.Entities.Person", "Director")
+                        .WithMany("PIDsDirigidos")
+                        .HasForeignKey("DirectorId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", null)
+                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", "formacionAcademica")
                         .WithOne("Pid")
                         .HasForeignKey("appGIUCT.Domain.Entities.Pid", "pkFormacionAcademica")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Director");
+
                     b.Navigation("formacionAcademica");
                 });
 
-            modelBuilder.Entity("appGIUCT.Domain.Entities.PracticaProfesionalizante", b =>
+            modelBuilder.Entity("appGIUCT.Domain.Entities.EnsayoCatedra", b =>
                 {
                     b.HasOne("appGIUCT.Domain.Entities.Person", "docente")
                         .WithMany()
                         .HasForeignKey("docenteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", "formacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("formacionAcademicaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -659,7 +567,24 @@ namespace appGIUCT.Migrations
 
                     b.Navigation("docente");
 
-                    b.Navigation("formacionAcademica");
+                    b.Navigation("tutor");
+                });
+
+            modelBuilder.Entity("appGIUCT.Domain.Entities.PracticaProfesionalizante", b =>
+                {
+                    b.HasOne("appGIUCT.Domain.Entities.Person", "docente")
+                        .WithMany()
+                        .HasForeignKey("docenteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("appGIUCT.Domain.Entities.Person", "tutor")
+                        .WithMany()
+                        .HasForeignKey("tutorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("docente");
 
                     b.Navigation("tutor");
                 });
@@ -672,12 +597,6 @@ namespace appGIUCT.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", "formacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("formacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("appGIUCT.Domain.Entities.Person", "tutor")
                         .WithMany()
                         .HasForeignKey("tutorId")
@@ -685,8 +604,6 @@ namespace appGIUCT.Migrations
                         .IsRequired();
 
                     b.Navigation("docenteSupervisor");
-
-                    b.Navigation("formacionAcademica");
 
                     b.Navigation("tutor");
                 });
@@ -699,15 +616,7 @@ namespace appGIUCT.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", "formacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("formacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("director");
-
-                    b.Navigation("formacionAcademica");
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.TesinaLicenciatura", b =>
@@ -718,15 +627,7 @@ namespace appGIUCT.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", "formacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("formacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("director");
-
-                    b.Navigation("formacionAcademica");
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.TesisPosgrado", b =>
@@ -737,21 +638,46 @@ namespace appGIUCT.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", "formacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("formacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("director");
-
-                    b.Navigation("formacionAcademica");
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.FormacionAcademica", b =>
                 {
+                    b.Navigation("IniciativaDeInvestigacion")
+                        .IsRequired();
+
                     b.Navigation("Pid")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("appGIUCT.Domain.Entities.IniciativaDeInvestigacion", b =>
+                {
+                    b.Navigation("Integrantes");
+
+                    b.Navigation("persona");
+                });
+
+            modelBuilder.Entity("appGIUCT.Domain.Entities.Person", b =>
+                {
+                    b.Navigation("IIComoIntegrante");
+
+                    b.Navigation("PIDsComoIntegrante");
+
+                    b.Navigation("PIDsDirigidos");
+
+                    b.Navigation("iniciativaDeInvestigacions");
+                });
+
+            modelBuilder.Entity("appGIUCT.Domain.Entities.Pid", b =>
+                {
+                    b.Navigation("Integrantes");
+
+                    b.Navigation("person");
+                });
+
+            modelBuilder.Entity("appGIUCT.Domain.Entities.Universidad", b =>
+                {
+                    b.Navigation("facultades");
                 });
 #pragma warning restore 612, 618
         }

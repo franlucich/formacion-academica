@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace ProveedorManagment.Ap.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/formacionacademica")]
     [ApiController]
     public class ProveedorController : ControllerBase
     {
@@ -20,7 +20,7 @@ namespace ProveedorManagment.Ap.Controllers
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpGet]
+        [HttpGet]           //Devuelve todas la formaciones academicas
 
         public async Task<ActionResult> GetFormA()
         {

@@ -21,8 +21,16 @@ namespace appGIUCT.Domain.Entities
         public string tipo {get; set;}
         public string estado {get; set; }
         public List<Person> person {get; set;}
-
         public FormacionAcademica formacionAcademica {get; set; }
+
         public int pkFormacionAcademica {get; set;}
-    }
+       
+        // Relación muchos a uno: un PID tiene un director
+        public int DirectorId { get; set; }
+        public Person Director { get; set; }
+
+        // Relación muchos a muchos: un PID puede tener varios integrantes
+        public List<PersonaPID> Integrantes { get; set; }
+
+        }
 }

@@ -18,9 +18,14 @@ namespace appGIUCT.Domain.Entities
         public DateTime fechaInicio {get; set;}
         public string titulo {get; set;}
 
-        public List<Person> person {get; set;}
+        public List<PersonaIniciat> persona {get; set;}
         
-        public FormacionAcademica formacionAcademica {get; set; }
+
+        public int DirectorId { get; set; }
+        public Person Director { get; set; }
+
+        // Relación muchos a muchos: un PID puede tener varios integrantes
+        public List<PersonaIniciat> Integrantes { get; set; }
         
 
 

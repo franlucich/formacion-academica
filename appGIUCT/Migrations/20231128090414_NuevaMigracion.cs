@@ -7,41 +7,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace appGIUCT.Migrations
 {
     /// <inheritdoc />
-    public partial class MigracionInicial : Migration
+    public partial class NuevaMigracion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Person",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nombre = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Apellido = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Dni = table.Column<int>(type: "int", nullable: false),
-                    cuil = table.Column<int>(type: "int", nullable: false),
-                    telefono = table.Column<int>(type: "int", nullable: false),
-                    celular = table.Column<int>(type: "int", nullable: false),
-                    direccionPostal = table.Column<int>(type: "int", nullable: false),
-                    emailPersonal = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    emailInsitucional = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    horasSemInvestigadas = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Person", x => x.Id);
-                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -87,11 +58,10 @@ namespace appGIUCT.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "FormacionAcademica",
+                name: "EnsayoCatedra",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     fechaInicio = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     fechaFin = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     titulo = table.Column<string>(type: "longtext", nullable: false)
@@ -99,31 +69,8 @@ namespace appGIUCT.Migrations
                     pkIniciativa = table.Column<int>(type: "int", nullable: false),
                     facultadId = table.Column<int>(type: "int", nullable: false),
                     pkFacultad = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FormacionAcademica", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_FormacionAcademica_Facultad_facultadId",
-                        column: x => x.facultadId,
-                        principalTable: "Facultad",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "EnsayoCatedra",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     docenteId = table.Column<int>(type: "int", nullable: false),
                     tutorId = table.Column<int>(type: "int", nullable: false),
-                    formacionAcademicaId = table.Column<int>(type: "int", nullable: false),
-                    pkFormacionAcademica = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -131,46 +78,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_EnsayoCatedra", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EnsayoCatedra_FormacionAcademica_formacionAcademicaId",
-                        column: x => x.formacionAcademicaId,
-                        principalTable: "FormacionAcademica",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EnsayoCatedra_Person_docenteId",
-                        column: x => x.docenteId,
-                        principalTable: "Person",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EnsayoCatedra_Person_tutorId",
-                        column: x => x.tutorId,
-                        principalTable: "Person",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "FormacionAcademicaPerson",
-                columns: table => new
-                {
-                    formacionAcademicasId = table.Column<int>(type: "int", nullable: false),
-                    personId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FormacionAcademicaPerson", x => new { x.formacionAcademicasId, x.personId });
-                    table.ForeignKey(
-                        name: "FK_FormacionAcademicaPerson_FormacionAcademica_formacionAcademi~",
-                        column: x => x.formacionAcademicasId,
-                        principalTable: "FormacionAcademica",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_FormacionAcademicaPerson_Person_personId",
-                        column: x => x.personId,
-                        principalTable: "Person",
+                        name: "FK_EnsayoCatedra_Facultad_facultadId",
+                        column: x => x.facultadId,
+                        principalTable: "Facultad",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -180,8 +90,7 @@ namespace appGIUCT.Migrations
                 name: "IniciativaDeInvestigacion",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     codigo = table.Column<int>(type: "int", nullable: false),
                     descripcion = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -192,17 +101,94 @@ namespace appGIUCT.Migrations
                     fechaInicio = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     titulo = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    formacionAcademicaId = table.Column<int>(type: "int", nullable: false),
+                    pkFormacionAcademica = table.Column<int>(type: "int", nullable: false),
+                    DirectorId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IniciativaDeInvestigacion", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Person",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombre = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Apellido = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Dni = table.Column<int>(type: "int", nullable: false),
+                    cuil = table.Column<int>(type: "int", nullable: false),
+                    telefono = table.Column<int>(type: "int", nullable: false),
+                    celular = table.Column<int>(type: "int", nullable: false),
+                    direccionPostal = table.Column<int>(type: "int", nullable: false),
+                    emailPersonal = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    emailInsitucional = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    horasSemInvestigadas = table.Column<int>(type: "int", nullable: false),
+                    PidId = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Person", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "PersonaIniciat",
+                columns: table => new
+                {
+                    PersonaId = table.Column<int>(type: "int", nullable: false),
+                    pkIniciativa = table.Column<int>(type: "int", nullable: false),
+                    Rol = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IniciativaDeInvestigacionId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersonaIniciat", x => new { x.PersonaId, x.pkIniciativa });
                     table.ForeignKey(
-                        name: "FK_IniciativaDeInvestigacion_FormacionAcademica_formacionAcadem~",
-                        column: x => x.formacionAcademicaId,
-                        principalTable: "FormacionAcademica",
+                        name: "FK_PersonaIniciat_IniciativaDeInvestigacion_IniciativaDeInvesti~",
+                        column: x => x.IniciativaDeInvestigacionId,
+                        principalTable: "IniciativaDeInvestigacion",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_PersonaIniciat_IniciativaDeInvestigacion_pkIniciativa",
+                        column: x => x.pkIniciativa,
+                        principalTable: "IniciativaDeInvestigacion",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PersonaIniciat_Person_PersonaId",
+                        column: x => x.PersonaId,
+                        principalTable: "Person",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "PersonFormacionAcademica",
+                columns: table => new
+                {
+                    FormacionesAcademicasId = table.Column<int>(type: "int", nullable: false),
+                    personaId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersonFormacionAcademica", x => new { x.FormacionesAcademicasId, x.personaId });
+                    table.ForeignKey(
+                        name: "FK_PersonFormacionAcademica_Person_personaId",
+                        column: x => x.personaId,
+                        principalTable: "Person",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -226,8 +212,8 @@ namespace appGIUCT.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     estado = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    formacionAcademicaId = table.Column<int>(type: "int", nullable: false),
                     pkFormacionAcademica = table.Column<int>(type: "int", nullable: false),
+                    DirectorId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -235,17 +221,11 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_Pid", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Pid_FormacionAcademica_formacionAcademicaId",
-                        column: x => x.formacionAcademicaId,
-                        principalTable: "FormacionAcademica",
+                        name: "FK_Pid_Person_DirectorId",
+                        column: x => x.DirectorId,
+                        principalTable: "Person",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Pid_FormacionAcademica_pkFormacionAcademica",
-                        column: x => x.pkFormacionAcademica,
-                        principalTable: "FormacionAcademica",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -253,12 +233,16 @@ namespace appGIUCT.Migrations
                 name: "PracticaProfesionalizante",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    fechaInicio = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    fechaFin = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    titulo = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    pkIniciativa = table.Column<int>(type: "int", nullable: false),
+                    facultadId = table.Column<int>(type: "int", nullable: false),
+                    pkFacultad = table.Column<int>(type: "int", nullable: false),
                     docenteId = table.Column<int>(type: "int", nullable: false),
                     tutorId = table.Column<int>(type: "int", nullable: false),
-                    formacionAcademicaId = table.Column<int>(type: "int", nullable: false),
-                    pkFormacionAcademica = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -266,9 +250,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_PracticaProfesionalizante", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PracticaProfesionalizante_FormacionAcademica_formacionAcadem~",
-                        column: x => x.formacionAcademicaId,
-                        principalTable: "FormacionAcademica",
+                        name: "FK_PracticaProfesionalizante_Facultad_facultadId",
+                        column: x => x.facultadId,
+                        principalTable: "Facultad",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -290,12 +274,16 @@ namespace appGIUCT.Migrations
                 name: "PracticaSupervisadaIngenieria",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    fechaInicio = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    fechaFin = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    titulo = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    pkIniciativa = table.Column<int>(type: "int", nullable: false),
+                    facultadId = table.Column<int>(type: "int", nullable: false),
+                    pkFacultad = table.Column<int>(type: "int", nullable: false),
                     docenteSupervisorId = table.Column<int>(type: "int", nullable: false),
                     tutorId = table.Column<int>(type: "int", nullable: false),
-                    formacionAcademicaId = table.Column<int>(type: "int", nullable: false),
-                    pkFormacionAcademica = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -303,9 +291,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_PracticaSupervisadaIngenieria", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PracticaSupervisadaIngenieria_FormacionAcademica_formacionAc~",
-                        column: x => x.formacionAcademicaId,
-                        principalTable: "FormacionAcademica",
+                        name: "FK_PracticaSupervisadaIngenieria_Facultad_facultadId",
+                        column: x => x.facultadId,
+                        principalTable: "Facultad",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -327,13 +315,17 @@ namespace appGIUCT.Migrations
                 name: "ProyectoFinalIngenieria",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    fechaInicio = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    fechaFin = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    titulo = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    pkIniciativa = table.Column<int>(type: "int", nullable: false),
+                    facultadId = table.Column<int>(type: "int", nullable: false),
+                    pkFacultad = table.Column<int>(type: "int", nullable: false),
                     directorId = table.Column<int>(type: "int", nullable: false),
                     fuenteFinanciemiento = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    formacionAcademicaId = table.Column<int>(type: "int", nullable: false),
-                    pkFormacionAcademica = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -341,9 +333,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_ProyectoFinalIngenieria", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProyectoFinalIngenieria_FormacionAcademica_formacionAcademic~",
-                        column: x => x.formacionAcademicaId,
-                        principalTable: "FormacionAcademica",
+                        name: "FK_ProyectoFinalIngenieria_Facultad_facultadId",
+                        column: x => x.facultadId,
+                        principalTable: "Facultad",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -359,13 +351,17 @@ namespace appGIUCT.Migrations
                 name: "TesinaLicenciatura",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    fechaInicio = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    fechaFin = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    titulo = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    pkIniciativa = table.Column<int>(type: "int", nullable: false),
+                    facultadId = table.Column<int>(type: "int", nullable: false),
+                    pkFacultad = table.Column<int>(type: "int", nullable: false),
                     directorId = table.Column<int>(type: "int", nullable: false),
                     fuenteFinanciamiento = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    formacionAcademicaId = table.Column<int>(type: "int", nullable: false),
-                    pkFormacionAcademica = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -373,9 +369,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_TesinaLicenciatura", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TesinaLicenciatura_FormacionAcademica_formacionAcademicaId",
-                        column: x => x.formacionAcademicaId,
-                        principalTable: "FormacionAcademica",
+                        name: "FK_TesinaLicenciatura_Facultad_facultadId",
+                        column: x => x.facultadId,
+                        principalTable: "Facultad",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -391,15 +387,19 @@ namespace appGIUCT.Migrations
                 name: "TesisPosgrado",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    fechaInicio = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    fechaFin = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    titulo = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    pkIniciativa = table.Column<int>(type: "int", nullable: false),
+                    facultadId = table.Column<int>(type: "int", nullable: false),
+                    pkFacultad = table.Column<int>(type: "int", nullable: false),
                     directorId = table.Column<int>(type: "int", nullable: false),
                     fuenteFinanciamiento = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     tipo = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    formacionAcademicaId = table.Column<int>(type: "int", nullable: false),
-                    pkFormacionAcademica = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -407,9 +407,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_TesisPosgrado", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TesisPosgrado_FormacionAcademica_formacionAcademicaId",
-                        column: x => x.formacionAcademicaId,
-                        principalTable: "FormacionAcademica",
+                        name: "FK_TesisPosgrado_Facultad_facultadId",
+                        column: x => x.facultadId,
+                        principalTable: "Facultad",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -422,52 +422,29 @@ namespace appGIUCT.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "IniciativaDeInvestigacionPerson",
+                name: "PersonaPID",
                 columns: table => new
                 {
-                    iniciativaDeInvestigacionsId = table.Column<int>(type: "int", nullable: false),
-                    personId = table.Column<int>(type: "int", nullable: false)
+                    PersonaId = table.Column<int>(type: "int", nullable: false),
+                    PIDId = table.Column<int>(type: "int", nullable: false),
+                    Rol = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IniciativaDeInvestigacionPerson", x => new { x.iniciativaDeInvestigacionsId, x.personId });
+                    table.PrimaryKey("PK_PersonaPID", x => new { x.PersonaId, x.PIDId });
                     table.ForeignKey(
-                        name: "FK_IniciativaDeInvestigacionPerson_IniciativaDeInvestigacion_in~",
-                        column: x => x.iniciativaDeInvestigacionsId,
-                        principalTable: "IniciativaDeInvestigacion",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_IniciativaDeInvestigacionPerson_Person_personId",
-                        column: x => x.personId,
+                        name: "FK_PersonaPID_Person_PersonaId",
+                        column: x => x.PersonaId,
                         principalTable: "Person",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "PersonPid",
-                columns: table => new
-                {
-                    personId = table.Column<int>(type: "int", nullable: false),
-                    pidsId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PersonPid", x => new { x.personId, x.pidsId });
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_PersonPid_Person_personId",
-                        column: x => x.personId,
-                        principalTable: "Person",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PersonPid_Pid_pidsId",
-                        column: x => x.pidsId,
+                        name: "FK_PersonaPID_Pid_PIDId",
+                        column: x => x.PIDId,
                         principalTable: "Pid",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -477,9 +454,9 @@ namespace appGIUCT.Migrations
                 column: "docenteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EnsayoCatedra_formacionAcademicaId",
+                name: "IX_EnsayoCatedra_facultadId",
                 table: "EnsayoCatedra",
-                column: "formacionAcademicaId");
+                column: "facultadId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EnsayoCatedra_tutorId",
@@ -492,34 +469,39 @@ namespace appGIUCT.Migrations
                 column: "universidadId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FormacionAcademica_facultadId",
-                table: "FormacionAcademica",
-                column: "facultadId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FormacionAcademicaPerson_personId",
-                table: "FormacionAcademicaPerson",
-                column: "personId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_IniciativaDeInvestigacion_formacionAcademicaId",
+                name: "IX_IniciativaDeInvestigacion_DirectorId",
                 table: "IniciativaDeInvestigacion",
-                column: "formacionAcademicaId");
+                column: "DirectorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IniciativaDeInvestigacionPerson_personId",
-                table: "IniciativaDeInvestigacionPerson",
-                column: "personId");
+                name: "IX_Person_PidId",
+                table: "Person",
+                column: "PidId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersonPid_pidsId",
-                table: "PersonPid",
-                column: "pidsId");
+                name: "IX_PersonaIniciat_IniciativaDeInvestigacionId",
+                table: "PersonaIniciat",
+                column: "IniciativaDeInvestigacionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pid_formacionAcademicaId",
+                name: "IX_PersonaIniciat_pkIniciativa",
+                table: "PersonaIniciat",
+                column: "pkIniciativa");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PersonaPID_PIDId",
+                table: "PersonaPID",
+                column: "PIDId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PersonFormacionAcademica_personaId",
+                table: "PersonFormacionAcademica",
+                column: "personaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pid_DirectorId",
                 table: "Pid",
-                column: "formacionAcademicaId");
+                column: "DirectorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pid_pkFormacionAcademica",
@@ -533,9 +515,9 @@ namespace appGIUCT.Migrations
                 column: "docenteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PracticaProfesionalizante_formacionAcademicaId",
+                name: "IX_PracticaProfesionalizante_facultadId",
                 table: "PracticaProfesionalizante",
-                column: "formacionAcademicaId");
+                column: "facultadId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PracticaProfesionalizante_tutorId",
@@ -548,9 +530,9 @@ namespace appGIUCT.Migrations
                 column: "docenteSupervisorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PracticaSupervisadaIngenieria_formacionAcademicaId",
+                name: "IX_PracticaSupervisadaIngenieria_facultadId",
                 table: "PracticaSupervisadaIngenieria",
-                column: "formacionAcademicaId");
+                column: "facultadId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PracticaSupervisadaIngenieria_tutorId",
@@ -563,9 +545,9 @@ namespace appGIUCT.Migrations
                 column: "directorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProyectoFinalIngenieria_formacionAcademicaId",
+                name: "IX_ProyectoFinalIngenieria_facultadId",
                 table: "ProyectoFinalIngenieria",
-                column: "formacionAcademicaId");
+                column: "facultadId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TesinaLicenciatura_directorId",
@@ -573,9 +555,9 @@ namespace appGIUCT.Migrations
                 column: "directorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TesinaLicenciatura_formacionAcademicaId",
+                name: "IX_TesinaLicenciatura_facultadId",
                 table: "TesinaLicenciatura",
-                column: "formacionAcademicaId");
+                column: "facultadId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TesisPosgrado_directorId",
@@ -583,25 +565,60 @@ namespace appGIUCT.Migrations
                 column: "directorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TesisPosgrado_formacionAcademicaId",
+                name: "IX_TesisPosgrado_facultadId",
                 table: "TesisPosgrado",
-                column: "formacionAcademicaId");
+                column: "facultadId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_EnsayoCatedra_Person_docenteId",
+                table: "EnsayoCatedra",
+                column: "docenteId",
+                principalTable: "Person",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_EnsayoCatedra_Person_tutorId",
+                table: "EnsayoCatedra",
+                column: "tutorId",
+                principalTable: "Person",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_IniciativaDeInvestigacion_Person_DirectorId",
+                table: "IniciativaDeInvestigacion",
+                column: "DirectorId",
+                principalTable: "Person",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Person_Pid_PidId",
+                table: "Person",
+                column: "PidId",
+                principalTable: "Pid",
+                principalColumn: "Id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Pid_Person_DirectorId",
+                table: "Pid");
+
             migrationBuilder.DropTable(
                 name: "EnsayoCatedra");
 
             migrationBuilder.DropTable(
-                name: "FormacionAcademicaPerson");
+                name: "PersonaIniciat");
 
             migrationBuilder.DropTable(
-                name: "IniciativaDeInvestigacionPerson");
+                name: "PersonaPID");
 
             migrationBuilder.DropTable(
-                name: "PersonPid");
+                name: "PersonFormacionAcademica");
 
             migrationBuilder.DropTable(
                 name: "PracticaProfesionalizante");
@@ -622,19 +639,16 @@ namespace appGIUCT.Migrations
                 name: "IniciativaDeInvestigacion");
 
             migrationBuilder.DropTable(
-                name: "Pid");
+                name: "Facultad");
+
+            migrationBuilder.DropTable(
+                name: "Universidades");
 
             migrationBuilder.DropTable(
                 name: "Person");
 
             migrationBuilder.DropTable(
-                name: "FormacionAcademica");
-
-            migrationBuilder.DropTable(
-                name: "Facultad");
-
-            migrationBuilder.DropTable(
-                name: "Universidades");
+                name: "Pid");
         }
     }
 }

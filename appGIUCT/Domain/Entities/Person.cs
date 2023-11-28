@@ -31,8 +31,17 @@ namespace appGIUCT.Domain.Entities
         public int horasSemInvestigadas{get; set;}
 
         public List<IniciativaDeInvestigacion> iniciativaDeInvestigacions {get; set;}
-        public List<Pid> pids {get; set;}
-        public List<FormacionAcademica> formacionAcademicas {get; set;}
+        // Relación muchos a muchos: una II puede tener dos o más integrantes
+        public List<PersonaIniciat> IIComoIntegrante { get; set; }
+
+        // Relación uno a muchos: 1 director puede estar asociado a más de un PID
+        public List<Pid> PIDsDirigidos { get; set; }
+
+        // Relación muchos a muchos: un PID puede tener dos o más integrantes
+        public List<PersonaPID> PIDsComoIntegrante { get; set; }
+       public List<FormacionAcademica> FormacionesAcademicas { get; set; }
+
+
 
 
 

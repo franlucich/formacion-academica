@@ -11,7 +11,6 @@ public class GIUCTDbContext : DbContext
     // entities 
     public DbSet<EnsayoCatedra> EnsayoCatedra { get; set; }
     public DbSet<Facultad> Facultad {get; set;}
-    public DbSet<FormacionAcademica> FormacionAcademica {get; set;}
     public DbSet<IniciativaDeInvestigacion> IniciativaDeInvestigacion {get; set;}
     public DbSet<Person> Person {get; set;}
     public DbSet<Pid> Pid {get; set;}
@@ -35,13 +34,131 @@ public class GIUCTDbContext : DbContext
     optionsBuilder.UseMySql("server=localhost;port=3309;database=FormA;user=root;password=Qzcb1357-",
         new MySqlServerVersion(new Version(8, 0, 34)));  
     }
+
+    
      protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
+    {
+    
+    //RELACION UNO A UNO ENTRE FORMACADEMICA Y PID
     modelBuilder.Entity<FormacionAcademica>()
         .HasOne(fa => fa.Pid)
-        .WithOne()
+        .WithOne(pid => pid.formacionAcademica)
         .HasForeignKey<Pid>(pid => pid.pkFormacionAcademica);
-}
+
+    //RELACION UNO A UNO ENTRE FORMACION ACADEMICA E INICIATIVA DE INVESTIGACION
+
+    modelBuilder.Entity<FormacionAcademica>()
+    .HasOne(fa => fa.IniciativaDeInvestigacion)
+    .WithOne()
+    .HasForeignKey<IniciativaDeInvestigacion>(ii => ii.Id);
+
+
+ //RELACION MUCHOS A MUCHOS PERSONA FORM ACADEMICA
+
+    modelBuilder.Entity<Person>()
+    .HasMany(p => p.FormacionesAcademicas)
+    .WithMany(fa => fa.persona)
+    .UsingEntity(j => j.ToTable("PersonFormacionAcademica"));
+   
+    
+    
+
+    //RELACION UNO A UNO ENTRE FORMACION ACADEMICA Y PID
+    
+    modelBuilder.Entity<FormacionAcademica>()
+    .HasOne(fa => fa.Pid)
+    .WithOne(pid => pid.formacionAcademica)
+    .HasForeignKey<Pid>(pid => pid.pkFormacionAcademica);
+
+
+modelBuilder.Entity<PersonaIniciat>()
+    .HasOne(pi => pi.person)
+    .WithMany(p => p.IIComoIntegrante)
+    .HasForeignKey(pi => pi.PersonaId);
+
+modelBuilder.Entity<PersonaIniciat>()
+    .HasOne(pi => pi.iniciativaDeInvestigacion)
+    .WithMany(ii => ii.persona)
+    .HasForeignKey(pi => pi.pkIniciativa); 
+
+
+    
+
+    //RELACION ENTRE PERSONA Y II
+
+     // Configuración para la relación uno a muchos (un director puede estar asociado a más de una II)
+        modelBuilder.Entity<Person>()
+        .HasMany(p => p.iniciativaDeInvestigacions)
+        .WithOne(pid => pid.Director)
+        .HasForeignKey(pid => pid.DirectorId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+
+        // Configuración para la relación muchos a uno (una II tiene un director)
+        modelBuilder.Entity<IniciativaDeInvestigacion>()
+            .HasOne(ii => ii.Director)
+            .WithMany(p => p.iniciativaDeInvestigacions)
+            .HasForeignKey(ii => ii.DirectorId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Configuración para la relación muchos a muchos (una II puede tener varios integrantes)
+        modelBuilder.Entity<PersonaIniciat>()
+            .HasKey(pp => new { pp.PersonaId, pp.pkIniciativa});
+
+    
+        modelBuilder.Entity<PersonaPID>()
+            .HasOne(pp => pp.PID)
+            .WithMany(pid => pid.Integrantes)
+            .HasForeignKey(pp => pp.PIDId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+    
+
+
+     // Configuración para la relación uno a muchos (un director puede estar asociado a más de un PID)
+        modelBuilder.Entity<Person>()
+            .HasMany(p => p.PIDsDirigidos)
+            .WithOne(pid => pid.Director)
+            .HasForeignKey(pid => pid.DirectorId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Configuración para la relación muchos a uno (un PID tiene un director)
+        modelBuilder.Entity<Pid>()
+            .HasOne(pid => pid.Director)
+            .WithMany(p => p.PIDsDirigidos)
+            .HasForeignKey(pid => pid.DirectorId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Configuración para la relación muchos a muchos (un PID puede tener varios integrantes)
+        modelBuilder.Entity<PersonaPID>()
+            .HasKey(pp => new { pp.PersonaId, pp.PIDId });
+
+        modelBuilder.Entity<PersonaPID>()
+            .HasOne(pp => pp.person)
+            .WithMany(p => p.PIDsComoIntegrante)
+            .HasForeignKey(pp => pp.PersonaId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<PersonaPID>()
+            .HasOne(pp => pp.PID)
+            .WithMany(pid => pid.Integrantes)
+            .HasForeignKey(pp => pp.PIDId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+
+    //HERENCIA DE FORMACION ACADEMICA
+
+    modelBuilder.Entity<FormacionAcademica>().UseTpcMappingStrategy();
+    modelBuilder.Entity<EnsayoCatedra>();
+    modelBuilder.Entity<TesisPosgrado>();
+    modelBuilder.Entity<TesinaLicenciatura>();
+    modelBuilder.Entity<ProyectoFinalIngenieria>();
+    modelBuilder.Entity<PracticaSupervisadaIngenieria>();
+    modelBuilder.Entity<PracticaProfesionalizante>();
+
+  
+
+    }
 
 
 }
