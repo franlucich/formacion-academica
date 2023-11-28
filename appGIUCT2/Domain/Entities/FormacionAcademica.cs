@@ -6,6 +6,9 @@ namespace appGIUCT.Domain.Entities
         {
             
         }
+
+        public Person persona {get; set;}
+        public int pkPersona {get; set;}
         public DateTime fechaInicio {get; set;}
         public DateTime fechaFin {get; set;}
         public string titulo {get; set;}
@@ -15,7 +18,6 @@ namespace appGIUCT.Domain.Entities
         public Facultad facultad { get; set; }
         public int pkFacultad { get; set; }
 
-        public List<PersonFormacionAcademica> persona {get; set;}
 
         public EnsayoCatedra ensayoCatedra {get; set;}
 

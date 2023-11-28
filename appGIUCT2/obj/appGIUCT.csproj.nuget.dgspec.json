@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/franco/Documentos/Diseño de Sistemas/appGIUCT2/appGIUCT.csproj": {}
+    "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT2/appGIUCT.csproj": {}
   },
   "projects": {
-    "/home/franco/Documentos/Diseño de Sistemas/appGIUCT2/appGIUCT.csproj": {
+    "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT2/appGIUCT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/franco/Documentos/Diseño de Sistemas/appGIUCT2/appGIUCT.csproj",
+        "projectUniqueName": "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT2/appGIUCT.csproj",
         "projectName": "appGIUCT",
-        "projectPath": "/home/franco/Documentos/Diseño de Sistemas/appGIUCT2/appGIUCT.csproj",
+        "projectPath": "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT2/appGIUCT.csproj",
         "packagesPath": "/home/franco/.nuget/packages/",
-        "outputPath": "/home/franco/Documentos/Diseño de Sistemas/appGIUCT2/obj/",
+        "outputPath": "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT2/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/franco/.nuget/NuGet/NuGet.Config"

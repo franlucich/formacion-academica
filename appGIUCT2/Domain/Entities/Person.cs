@@ -39,7 +39,6 @@ namespace appGIUCT.Domain.Entities
 
         // Relación muchos a muchos: un PID puede tener dos o más integrantes
         public List<PersonaPID> PIDsComoIntegrante { get; set; }
-       public List<PersonFormacionAcademica> FormacionesAcademicas { get; set; }
 
 
 

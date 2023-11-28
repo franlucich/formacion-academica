@@ -137,21 +137,6 @@ modelBuilder.Entity<PersonaIniciat>()
             .OnDelete(DeleteBehavior.Restrict);
 
 
-    //HERENCIA DE FORMACION ACADEMICA
-
-        
-     modelBuilder.Entity<PersonFormacionAcademica>()
-        .HasKey(pf => new { pf.PersonId, pf.FormacionAcademicaId });
-
-    modelBuilder.Entity<PersonFormacionAcademica>()
-        .HasOne(pf => pf.Persona)
-        .WithMany(p => p.FormacionesAcademicas)
-        .HasForeignKey(pf => pf.PersonId);
-
-    modelBuilder.Entity<PersonFormacionAcademica>()
-        .HasOne(pf => pf.FormacionAcademica)
-        .WithMany(fa => fa.persona)
-        .HasForeignKey(pf => pf.FormacionAcademicaId);
 
 
     //RELACIION ENTRE FA Y SUB CLASES DE FA

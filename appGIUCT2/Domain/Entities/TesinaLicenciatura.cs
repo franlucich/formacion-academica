@@ -14,6 +14,6 @@ namespace appGIUCT.Domain.Entities
 
         public FormacionAcademica formacionAcademicas {get; set;}
 
-          public PersonFormacionAcademica PersonaFormacionAcademica { get; set; }
+       
     }
 }

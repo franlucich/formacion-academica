@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9iEZdoerVrshd1rGWQRhLVpKUsomuuW3NM+gt05PD7q9Rsypyi3DaoFuC2PNOrqMdsmMhsvxowASDPytRgnJTA==",
+  "dgSpecHash": "9pD7AVTy7pcn49VPnD1lTIbEjwVFdRz2nfVUo2h1i9iT0/NefNieS9qWHdI0s4d1He7WpzbKPnANAOqWtOmbRQ==",
   "success": true,
-  "projectFilePath": "/home/franco/Documentos/Diseño de Sistemas/appGIUCT2/appGIUCT.csproj",
+  "projectFilePath": "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT2/appGIUCT.csproj",
   "expectedPackageFiles": [
     "/home/franco/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/franco/.nuget/packages/microsoft.entityframeworkcore/7.0.11/microsoft.entityframeworkcore.7.0.11.nupkg.sha512",

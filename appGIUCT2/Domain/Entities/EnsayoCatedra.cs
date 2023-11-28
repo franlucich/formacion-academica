@@ -15,7 +15,6 @@ namespace appGIUCT.Domain.Entities
         public Person docente {get; set;}
         public Person tutor {get; set; }
 
-        public PersonFormacionAcademica PersonaFormacionAcademica { get; set; }
 
 
 

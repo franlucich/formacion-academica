@@ -70,12 +70,6 @@ namespace appGIUCT.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("PersonaFormacionAcademicaFormacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonaFormacionAcademicaPersonId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -96,8 +90,6 @@ namespace appGIUCT.Migrations
                         .IsUnique();
 
                     b.HasIndex("tutorId");
-
-                    b.HasIndex("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId");
 
                     b.ToTable("EnsayoCatedra");
                 });
@@ -152,10 +144,16 @@ namespace appGIUCT.Migrations
                     b.Property<DateTime>("fechaInicio")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("personaId")
+                        .HasColumnType("int");
+
                     b.Property<int>("pkFacultad")
                         .HasColumnType("int");
 
                     b.Property<int>("pkIniciativa")
+                        .HasColumnType("int");
+
+                    b.Property<int>("pkPersona")
                         .HasColumnType("int");
 
                     b.Property<string>("titulo")
@@ -165,6 +163,8 @@ namespace appGIUCT.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("facultadId");
+
+                    b.HasIndex("personaId");
 
                     b.ToTable("FormacionAcademica");
                 });
@@ -270,21 +270,6 @@ namespace appGIUCT.Migrations
                     b.ToTable("Person");
                 });
 
-            modelBuilder.Entity("appGIUCT.Domain.Entities.PersonFormacionAcademica", b =>
-                {
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FormacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PersonId", "FormacionAcademicaId");
-
-                    b.HasIndex("FormacionAcademicaId");
-
-                    b.ToTable("PersonFormacionAcademica");
-                });
-
             modelBuilder.Entity("appGIUCT.Domain.Entities.Pid", b =>
                 {
                     b.Property<int>("Id")
@@ -350,12 +335,6 @@ namespace appGIUCT.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("PersonaFormacionAcademicaFormacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonaFormacionAcademicaPersonId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -377,8 +356,6 @@ namespace appGIUCT.Migrations
 
                     b.HasIndex("tutorId");
 
-                    b.HasIndex("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId");
-
                     b.ToTable("PracticaProfesionalizante");
                 });
 
@@ -390,12 +367,6 @@ namespace appGIUCT.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("PersonaFormacionAcademicaFormacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonaFormacionAcademicaPersonId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -418,8 +389,6 @@ namespace appGIUCT.Migrations
 
                     b.HasIndex("tutorId");
 
-                    b.HasIndex("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId");
-
                     b.ToTable("PracticaSupervisadaIngenieria");
                 });
 
@@ -431,12 +400,6 @@ namespace appGIUCT.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("PersonaFormacionAcademicaFormacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonaFormacionAcademicaPersonId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -458,8 +421,6 @@ namespace appGIUCT.Migrations
                     b.HasIndex("pkFormacionAcademica")
                         .IsUnique();
 
-                    b.HasIndex("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId");
-
                     b.ToTable("ProyectoFinalIngenieria");
                 });
 
@@ -471,12 +432,6 @@ namespace appGIUCT.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("PersonaFormacionAcademicaFormacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonaFormacionAcademicaPersonId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -498,8 +453,6 @@ namespace appGIUCT.Migrations
                     b.HasIndex("pkFormacionAcademica")
                         .IsUnique();
 
-                    b.HasIndex("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId");
-
                     b.ToTable("TesinaLicenciatura");
                 });
 
@@ -511,12 +464,6 @@ namespace appGIUCT.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("PersonaFormacionAcademicaFormacionAcademicaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonaFormacionAcademicaPersonId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -541,8 +488,6 @@ namespace appGIUCT.Migrations
 
                     b.HasIndex("pkFormacionAcademica")
                         .IsUnique();
-
-                    b.HasIndex("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId");
 
                     b.ToTable("TesisPosgrado");
                 });
@@ -630,14 +575,6 @@ namespace appGIUCT.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.PersonFormacionAcademica", "PersonaFormacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PersonaFormacionAcademica");
-
                     b.Navigation("docente");
 
                     b.Navigation("formacionAcademicas");
@@ -664,7 +601,15 @@ namespace appGIUCT.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("appGIUCT.Domain.Entities.Person", "persona")
+                        .WithMany()
+                        .HasForeignKey("personaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("facultad");
+
+                    b.Navigation("persona");
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.IniciativaDeInvestigacion", b =>
@@ -689,25 +634,6 @@ namespace appGIUCT.Migrations
                     b.HasOne("appGIUCT.Domain.Entities.Pid", null)
                         .WithMany("person")
                         .HasForeignKey("PidId");
-                });
-
-            modelBuilder.Entity("appGIUCT.Domain.Entities.PersonFormacionAcademica", b =>
-                {
-                    b.HasOne("appGIUCT.Domain.Entities.FormacionAcademica", "FormacionAcademica")
-                        .WithMany("persona")
-                        .HasForeignKey("FormacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("appGIUCT.Domain.Entities.Person", "Persona")
-                        .WithMany("FormacionesAcademicas")
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FormacionAcademica");
-
-                    b.Navigation("Persona");
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.Pid", b =>
@@ -749,14 +675,6 @@ namespace appGIUCT.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.PersonFormacionAcademica", "PersonaFormacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PersonaFormacionAcademica");
-
                     b.Navigation("docente");
 
                     b.Navigation("formacionAcademicas");
@@ -784,14 +702,6 @@ namespace appGIUCT.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.PersonFormacionAcademica", "PersonaFormacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PersonaFormacionAcademica");
-
                     b.Navigation("docenteSupervisor");
 
                     b.Navigation("formacionAcademicas");
@@ -813,14 +723,6 @@ namespace appGIUCT.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.PersonFormacionAcademica", "PersonaFormacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PersonaFormacionAcademica");
-
                     b.Navigation("director");
 
                     b.Navigation("formacionAcademicas");
@@ -839,14 +741,6 @@ namespace appGIUCT.Migrations
                         .HasForeignKey("appGIUCT.Domain.Entities.TesinaLicenciatura", "pkFormacionAcademica")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("appGIUCT.Domain.Entities.PersonFormacionAcademica", "PersonaFormacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PersonaFormacionAcademica");
 
                     b.Navigation("director");
 
@@ -867,14 +761,6 @@ namespace appGIUCT.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("appGIUCT.Domain.Entities.PersonFormacionAcademica", "PersonaFormacionAcademica")
-                        .WithMany()
-                        .HasForeignKey("PersonaFormacionAcademicaPersonId", "PersonaFormacionAcademicaFormacionAcademicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PersonaFormacionAcademica");
-
                     b.Navigation("director");
 
                     b.Navigation("formacionAcademicas");
@@ -890,8 +776,6 @@ namespace appGIUCT.Migrations
 
                     b.Navigation("ensayoCatedra")
                         .IsRequired();
-
-                    b.Navigation("persona");
 
                     b.Navigation("practicaProfesionalizante")
                         .IsRequired();
@@ -918,8 +802,6 @@ namespace appGIUCT.Migrations
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.Person", b =>
                 {
-                    b.Navigation("FormacionesAcademicas");
-
                     b.Navigation("IIComoIntegrante");
 
                     b.Navigation("PIDsComoIntegrante");
