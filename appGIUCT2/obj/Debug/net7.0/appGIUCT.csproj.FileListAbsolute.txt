@@ -1,0 +1,121 @@
+C:/Users/ivan1/Desktop/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.csproj.AssemblyReference.cache
+C:/Users/ivan1/Desktop/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/ivan1/Desktop/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.AssemblyInfoInputs.cache
+C:/Users/ivan1/Desktop/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.AssemblyInfo.cs
+C:/Users/ivan1/Desktop/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.csproj.CoreCompileInputs.cache
+C:/Users/ivan1/Desktop/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.MvcApplicationPartsAssemblyInfo.cs
+C:/Users/ivan1/Desktop/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.MvcApplicationPartsAssemblyInfo.cache
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.csproj.AssemblyReference.cache
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.GeneratedMSBuildEditorConfig.editorconfig
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.AssemblyInfoInputs.cache
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.AssemblyInfo.cs
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.csproj.CoreCompileInputs.cache
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.MvcApplicationPartsAssemblyInfo.cs
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.MvcApplicationPartsAssemblyInfo.cache
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/appsettings.Development.json
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/appsettings.json
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/appGIUCT
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/appGIUCT.deps.json
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/appGIUCT.runtimeconfig.json
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/appGIUCT.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/appGIUCT.pdb
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Humanizer.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Design.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Relational.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Microsoft.OpenApi.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Mono.TextTemplating.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/MySqlConnector.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Pomelo.EntityFrameworkCore.MySql.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Serilog.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Serilog.AspNetCore.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Serilog.Extensions.Hosting.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Serilog.Extensions.Logging.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Serilog.Formatting.Compact.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Serilog.Settings.Configuration.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Serilog.Sinks.Console.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Serilog.Sinks.Debug.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Serilog.Sinks.File.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/System.CodeDom.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/System.Data.SqlClient.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/runtimes/win-arm64/native/sni.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/runtimes/win-x64/native/sni.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/runtimes/win-x86/native/sni.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/bin/Debug/net7.0/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/staticwebassets/msbuild.appGIUCT.Microsoft.AspNetCore.StaticWebAssets.props
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/staticwebassets/msbuild.build.appGIUCT.props
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.appGIUCT.props
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.appGIUCT.props
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/staticwebassets.pack.json
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/staticwebassets.build.json
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/staticwebassets.development.json
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/scopedcss/bundle/appGIUCT.styles.css
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.csproj.CopyComplete
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/refint/appGIUCT.dll
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.pdb
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/appGIUCT.genruntimeconfig.cache
+/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/Debug/net7.0/ref/appGIUCT.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/appGIUCT.csproj.AssemblyReference.cache
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/appGIUCT.GeneratedMSBuildEditorConfig.editorconfig
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/appGIUCT.AssemblyInfoInputs.cache
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/appGIUCT.AssemblyInfo.cs
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/appGIUCT.csproj.CoreCompileInputs.cache
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/appGIUCT.MvcApplicationPartsAssemblyInfo.cs
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/appGIUCT.MvcApplicationPartsAssemblyInfo.cache
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/appGIUCT.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/refint/appGIUCT.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/appGIUCT.pdb
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/appsettings.Development.json
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/appsettings.json
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/appGIUCT
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/appGIUCT.deps.json
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/appGIUCT.runtimeconfig.json
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/appGIUCT.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/appGIUCT.pdb
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Humanizer.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Design.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Relational.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Microsoft.OpenApi.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Mono.TextTemplating.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/MySqlConnector.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Pomelo.EntityFrameworkCore.MySql.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Serilog.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Serilog.AspNetCore.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Serilog.Extensions.Hosting.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Serilog.Extensions.Logging.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Serilog.Formatting.Compact.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Serilog.Settings.Configuration.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Serilog.Sinks.Console.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Serilog.Sinks.Debug.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Serilog.Sinks.File.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/System.CodeDom.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/System.Data.SqlClient.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/runtimes/win-arm64/native/sni.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/runtimes/win-x64/native/sni.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/runtimes/win-x86/native/sni.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/bin/Debug/net7.0/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/staticwebassets/msbuild.appGIUCT.Microsoft.AspNetCore.StaticWebAssets.props
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/staticwebassets/msbuild.build.appGIUCT.props
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.appGIUCT.props
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.appGIUCT.props
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/staticwebassets.pack.json
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/staticwebassets.build.json
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/staticwebassets.development.json
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/scopedcss/bundle/appGIUCT.styles.css
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/appGIUCT.csproj.CopyComplete
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/appGIUCT.genruntimeconfig.cache
+/home/franco/Documentos/Diseño de Sistemas/appGIUCT/obj/Debug/net7.0/ref/appGIUCT.dll
