@@ -4,11 +4,13 @@ namespace appGIUCT.Domain.Entities
     {
         public ProyectoFinalIngenieria() {
             director = null;
-            fuenteFinanciamiento = "";
+            fuenteFinanciemiento = "";
         }
-
-        public Persona director {get; set; }
+        public override string TipoForm => "ProyectoFInalIngenieria";
+        public Person director {get; set; }
         public string fuenteFinanciemiento {get; set;}
+   
+
 
     }
 }

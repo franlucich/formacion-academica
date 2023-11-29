@@ -6,8 +6,10 @@ namespace appGIUCT.Domain.Entities
             docenteSupervisor = null;
             tutor = null;
         }
+        public override string TipoForm => "PracticaSupervisadaIngenieria";
+        public Person docenteSupervisor {get; set;}
+        public Person tutor {get; set;}
         
-        public Persona docenteSupervisor {get; set;}
-        public Persona tutor {get; set;}
+
     }
 }

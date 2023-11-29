@@ -10,9 +10,10 @@ namespace appGIUCT.Domain.Entities
             telefono =0;
             celular =0;
             direccionPostal = 0;
-            emailPersonal = 0;
-            emailInsitucional = 0;
+            emailPersonal = "";
+            emailInsitucional = "";
             horasSemInvestigadas = 0;
+            iniciativaDeInvestigacions = new List<IniciativaDeInvestigacion>();
         }
     
         public string Nombre { get; set; }
@@ -28,6 +29,23 @@ namespace appGIUCT.Domain.Entities
         public string emailPersonal {get; set;}
         public string emailInsitucional {get; set;}
         public int horasSemInvestigadas{get; set;}
+
+        public List<IniciativaDeInvestigacion> iniciativaDeInvestigacions {get; set;}
+        // Relación muchos a muchos: una II puede tener dos o más integrantes
+        public List<PersonaIniciat> IIComoIntegrante { get; set; }
+
+        // Relación uno a muchos: 1 director puede estar asociado a más de un PID
+        public List<Pid> PIDsDirigidos { get; set; }
+
+        // Relación muchos a muchos: un PID puede tener dos o más integrantes
+        public List<PersonaPID> PIDsComoIntegrante { get; set; }
+       public List<FormacionAcademica> FormacionesAcademicas { get; set; }
+
+
+
+
+
+
 
     }
 }
