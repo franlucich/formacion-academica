@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TesisPosgrado } from '../tesis-posgrado';
 
 @Component({
   selector: 'app-data-table',
@@ -10,4 +11,6 @@ import { CommonModule } from '@angular/common';
 })
 export class DataTableComponent {
 
-}
+    @Input() items!: TesisPosgrado[];
+
+    }

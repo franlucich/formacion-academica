@@ -9,7 +9,7 @@
                     </div>                      
                 </div>
                 <div class="col mx-5">
-                    <button class="btn btn-outline-success" type="nuevo" id="nuevo" data-bs-toggle="modal" data-bs-target="#modalCreate"><i class="bi bi-plus-lg"></i>Nuevo</button>
+                    <button class="btn btn-outline-verde-success" type="nuevo" id="nuevo" data-bs-toggle="modal" data-bs-target="#modalCreate"><i class="bi bi-plus-lg"></i>Nuevo</button>
                 </div>
             </div>
         </div>
@@ -26,16 +26,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>Prueba</th>
-                    <td>Prueba</td>
-                    <td>Prueba</td>
-                    <td>Prueba</td>
-                    <td>Prueba</td>
-                    <td>
-                        <button class="btn btn-outline-warning btn-sm mx-2" type="button" data-bs-toggle="modal" data-bs-target="#modalEdit"><i class="bi bi-pencil-square"></i></button>
-                        <button class="btn btn-outline-danger btn-sm"type="button" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class="bi bi-trash"></i></button>
-                    </td>
+            
+                <tr *ngFor="let item of items">
+                        <th>{{ item.id }}</th>
+                        <td>{{ item.nombre }}</td>
+                        <td>{{ item.titulo }}</td>
+                        <td>{{ item.apellido }}</td>
+                        <td>{{ item.fechaini }}</td>
+                        <td>
+                            <button class="btn btn-outline-warning btn-sm mx-2" type="button" data-bs-toggle="modal" data-bs-target="#modalEdit"><i class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-outline-rojo-warning btn-sm"type="button" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class="bi bi-trash"></i></button>
+                        </td>
+                </tr>
+
             </tbody>
         </table>
     </div>

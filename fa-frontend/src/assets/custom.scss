@@ -1,0 +1,19 @@
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+@import '../../node_modules/bootstrap/scss/mixins';
+
+$custom-colors: (
+  "verde-bg": #124557,
+  "verde-btn1": #147186,
+  "verde-btn2": #122233,
+  "verde-success" : #20DAD8,
+  "rojo-warning": #FF0F0F
+
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
