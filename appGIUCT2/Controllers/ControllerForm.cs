@@ -1,5 +1,5 @@
 using appGIUCT.Domain.Entities;
-using appGIUCT.Domain.Repositores;
+using appGIUCT.Domain.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 
@@ -11,86 +11,117 @@ namespace ProveedorManagment.Ap.Controllers
 {
     [Route("api/formacionacademica")]
     [ApiController]
-    public class ProveedorController : ControllerBase
+    public class GIUController : ControllerBase
     {
-        // private readonly IUnitOfWork unitOfWork;
+         private readonly IUnitOfWork unitOfWork;
+         
+         public GIUController(IUnitOfWork unitOfWork)
+        {
+             this.unitOfWork = unitOfWork;
+         }
 
-        // public ProveedorController(IUnitOfWork unitOfWork)
-        // {
-        //     this.unitOfWork = unitOfWork;
-        // }
+         [HttpGet]           //Devuelve todas la formaciones academicas
+         
+         public async Task<ActionResult<IEnumerable<FormacionAcademica>>> GetFormA()
+         {
+             try
+            {
+                return (await this.unitOfWork.FormRepo.GetFormA()).ToList();
+                
+            }
+             catch (Exception)
+             {
+                 return StatusCode(StatusCodes.Status500InternalServerError,"Error retrieving data from the database");
+             }
+         }
 
-        // [HttpGet]           //Devuelve todas la formaciones academicas
+         [HttpGet("{id:int}")] //Buscar por id
+         public async Task<ActionResult<FormacionAcademica>> GetFormacionAcademicaId(int id)
+         {
+             try
+             {
+                 var result = await unitOfWork.FormRepo.GetFormacionAcademicaId(id);
+             
+                 if (result == null)
+                {
 
-        // public async Task<ActionResult> GetFormA()
-        // {
-        //     try
-        //     {
-        //         return Ok(await this.unitOfWork.FormRepo.GetFormA());
-        //     }
-        //     catch (Exception)
-        //     {
-        //         return StatusCode(StatusCodes.Status500InternalServerError,"Error retrieving data from the database");
-        //     }
-        // }
-        //  [HttpGet("{id:int}")]
-        // public async Task<ActionResult<Proveedor>> Get(int id)
-        // {
-        //     try
-        //     {
-        //         var result = await unitOfWork.Proveedors.GetProveedor(id);
-        //         if (result == null) return NotFound("No se encontro proveedor con ese Id");
+                    return NotFound($"No hay ofertas activas para el proveedor con id:{id}");
+                }
 
-        //         return result;
-        //     }
-        //     catch (Exception)
-        //     {
-        //         return StatusCode(StatusCodes.Status500InternalServerError,
-        //             "Error retrieving data from the database");
-        //     }
-        // }
+                return Ok(result);
+             }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,"Error retrieving data from database");
+            }
+         }
+     
+       [HttpPost]
 
-        // [HttpPost]
-        // public async Task<ActionResult<Proveedor>> Create(Proveedor proveedor)
-        // {
-        //     try
-        //     {
-        //         if (proveedor == null)
-        //             return BadRequest();
+            public async Task<ActionResult<FormacionAcademica>> Create(FormacionAcademica oferta)
+            {
+            try
+            {
+                if (oferta == null)
+                    return BadRequest();
 
-        //         var createdProveedor = await unitOfWork.Proveedors.Add(proveedor);
-        //         await unitOfWork.CompleteAsync();
+                var createdEmployee = await unitOfWork.FormRepo.Add(oferta);
+                await unitOfWork.CompleteAsync();
 
-        //         return CreatedAtAction(nameof(Get),
-        //             new { id = createdProveedor.Id }, createdProveedor);
-        //     }
-        //     catch (Exception)
-        //     {
-        //         return StatusCode(StatusCodes.Status500InternalServerError,
-        //             "Error al crear un nuevo proveedor");
-        //     }
-        // }
-        //    [HttpPut("{id}")]
-        // public async Task<ActionResult<Proveedor?>> Modificar(int id, Proveedor proveedor)
-        // {
-        //     try
-        //     {
-        //         if (id != proveedor.Id)
-        //             return BadRequest("Proveedor ID mismatch");
+                return CreatedAtAction(nameof(GetFormA),
+                    new { id = createdEmployee?.Id }, createdEmployee);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error creating new employee record");
+            }
+        }
+         
+      [HttpPut("{id}")]
+        public async Task<ActionResult<FormacionAcademica?>> Modificar(int id, FormacionAcademica formacionAcademica)
+        {
+            try
+            {
+                if (id != formacionAcademica.Id)
+                    return BadRequest("Proveedor ID mismatch");
 
-        //         var proveedorToUpdate = await unitOfWork.Proveedors.GetProveedor(id);
+                var proveedorToUpdate = await unitOfWork.FormRepo.GetFormacionAcademicaId(id);
 
-        //         if (proveedorToUpdate == null)
-        //             return NotFound($"Proveedor with Id = {id} not found");
+                if (proveedorToUpdate == null)
+                    return NotFound($"Proveedor with Id = {id} not found");
 
-        //         return await unitOfWork.Proveedors.Update(proveedor);
-        //     }
-        //     catch (Exception)
-        //     {
-        //         return StatusCode(StatusCodes.Status500InternalServerError,
-        //             "Error updating data");
-        //     }
+                return await unitOfWork.FormRepo.Modificar(formacionAcademica);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error updating data");
+            }
+        }
 
-//        }
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult<FormacionAcademica?>> EliminarForm(int id)
+    {
+        try
+        {
+            var eliminar = await unitOfWork.FormRepo.GetFormacionAcademicaId(id);
+
+            if (eliminar == null)
+            {
+                return NotFound($"No se encontró formacion academica con Id = {id}");
+            }
+
+            return Ok(await unitOfWork.FormRepo.EliminarForm(id));             
+        }
+
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error deleting data");
+        }
+    }
+        
+    
     }
 }

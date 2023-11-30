@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using appGIUCT;
-using appGIUCT.Domain.Repositores;
+using appGIUCT.Domain.Repository;
 using appGIUCT.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +14,8 @@ var services = builder.Services;
 
 
 services.AddDbContext<GIUCTDbContext>();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
 
 services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -21,21 +23,21 @@ services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Agrego Controllers
 services.AddControllers();
 
+
 var app = builder.Build();
 
+if(app.Environment.IsDevelopment())
+    {
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
+app.UseHttpsRedirection();
+
+app.UseAuthentication();
 app.MapControllers();
 
-app.MapGet("/", () => "Hello World!");
+
 
 
 app.Run();
-
-
-//     //retrieve all the students from the database
-//     foreach (var s in context.Students) {
-//         Console.WriteLine($"First Name: {s.FirstName}, Last Name: {s.LastName}");
-//     }    
-// }
-///////////////////////
-

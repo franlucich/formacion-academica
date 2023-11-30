@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace appGIUCT.Migrations
 {
     [DbContext(typeof(GIUCTDbContext))]
-    [Migration("20231128181704_NuevaMigracion")]
+    [Migration("20231129001133_NuevaMigracion")]
     partial class NuevaMigracion
     {
         /// <inheritdoc />
@@ -169,7 +169,7 @@ namespace appGIUCT.Migrations
 
                     b.HasIndex("personaId");
 
-                    b.ToTable("FormacionAcademica");
+                    b.ToTable("FormacionAcademicas");
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.IniciativaDeInvestigacion", b =>

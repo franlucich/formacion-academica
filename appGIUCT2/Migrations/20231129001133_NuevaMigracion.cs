@@ -76,7 +76,7 @@ namespace appGIUCT.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "FormacionAcademica",
+                name: "FormacionAcademicas",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -95,9 +95,9 @@ namespace appGIUCT.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FormacionAcademica", x => x.Id);
+                    table.PrimaryKey("PK_FormacionAcademicas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FormacionAcademica_Facultad_facultadId",
+                        name: "FK_FormacionAcademicas_Facultad_facultadId",
                         column: x => x.facultadId,
                         principalTable: "Facultad",
                         principalColumn: "Id",
@@ -128,9 +128,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_IniciativaDeInvestigacion", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_IniciativaDeInvestigacion_FormacionAcademica_Id",
+                        name: "FK_IniciativaDeInvestigacion_FormacionAcademicas_Id",
                         column: x => x.Id,
-                        principalTable: "FormacionAcademica",
+                        principalTable: "FormacionAcademicas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -226,9 +226,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_Pid", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Pid_FormacionAcademica_pkFormacionAcademica",
+                        name: "FK_Pid_FormacionAcademicas_pkFormacionAcademica",
                         column: x => x.pkFormacionAcademica,
-                        principalTable: "FormacionAcademica",
+                        principalTable: "FormacionAcademicas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -256,9 +256,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_PracticaProfesionalizante", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PracticaProfesionalizante_FormacionAcademica_pkFormacionAcad~",
+                        name: "FK_PracticaProfesionalizante_FormacionAcademicas_pkFormacionAca~",
                         column: x => x.pkFormacionAcademica,
-                        principalTable: "FormacionAcademica",
+                        principalTable: "FormacionAcademicas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -292,9 +292,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_PracticaSupervisadaIngenieria", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PracticaSupervisadaIngenieria_FormacionAcademica_pkFormacion~",
+                        name: "FK_PracticaSupervisadaIngenieria_FormacionAcademicas_pkFormacio~",
                         column: x => x.pkFormacionAcademica,
-                        principalTable: "FormacionAcademica",
+                        principalTable: "FormacionAcademicas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -329,9 +329,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_ProyectoFinalIngenieria", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProyectoFinalIngenieria_FormacionAcademica_pkFormacionAcadem~",
+                        name: "FK_ProyectoFinalIngenieria_FormacionAcademicas_pkFormacionAcade~",
                         column: x => x.pkFormacionAcademica,
-                        principalTable: "FormacionAcademica",
+                        principalTable: "FormacionAcademicas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -360,9 +360,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_TesinaLicenciatura", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TesinaLicenciatura_FormacionAcademica_pkFormacionAcademica",
+                        name: "FK_TesinaLicenciatura_FormacionAcademicas_pkFormacionAcademica",
                         column: x => x.pkFormacionAcademica,
-                        principalTable: "FormacionAcademica",
+                        principalTable: "FormacionAcademicas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -393,9 +393,9 @@ namespace appGIUCT.Migrations
                 {
                     table.PrimaryKey("PK_TesisPosgrado", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TesisPosgrado_FormacionAcademica_pkFormacionAcademica",
+                        name: "FK_TesisPosgrado_FormacionAcademicas_pkFormacionAcademica",
                         column: x => x.pkFormacionAcademica,
-                        principalTable: "FormacionAcademica",
+                        principalTable: "FormacionAcademicas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -456,13 +456,13 @@ namespace appGIUCT.Migrations
                 column: "universidadId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FormacionAcademica_facultadId",
-                table: "FormacionAcademica",
+                name: "IX_FormacionAcademicas_facultadId",
+                table: "FormacionAcademicas",
                 column: "facultadId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FormacionAcademica_personaId",
-                table: "FormacionAcademica",
+                name: "IX_FormacionAcademicas_personaId",
+                table: "FormacionAcademicas",
                 column: "personaId");
 
             migrationBuilder.CreateIndex(
@@ -567,10 +567,10 @@ namespace appGIUCT.Migrations
                 unique: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_EnsayoCatedra_FormacionAcademica_pkFormacionAcademica",
+                name: "FK_EnsayoCatedra_FormacionAcademicas_pkFormacionAcademica",
                 table: "EnsayoCatedra",
                 column: "pkFormacionAcademica",
-                principalTable: "FormacionAcademica",
+                principalTable: "FormacionAcademicas",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
@@ -591,8 +591,8 @@ namespace appGIUCT.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_FormacionAcademica_Person_personaId",
-                table: "FormacionAcademica",
+                name: "FK_FormacionAcademicas_Person_personaId",
+                table: "FormacionAcademicas",
                 column: "personaId",
                 principalTable: "Person",
                 principalColumn: "Id",
@@ -618,7 +618,7 @@ namespace appGIUCT.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Pid_FormacionAcademica_pkFormacionAcademica",
+                name: "FK_Pid_FormacionAcademicas_pkFormacionAcademica",
                 table: "Pid");
 
             migrationBuilder.DropForeignKey(
@@ -653,7 +653,7 @@ namespace appGIUCT.Migrations
                 name: "IniciativaDeInvestigacion");
 
             migrationBuilder.DropTable(
-                name: "FormacionAcademica");
+                name: "FormacionAcademicas");
 
             migrationBuilder.DropTable(
                 name: "Facultad");

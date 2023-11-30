@@ -166,7 +166,7 @@ namespace appGIUCT.Migrations
 
                     b.HasIndex("personaId");
 
-                    b.ToTable("FormacionAcademica");
+                    b.ToTable("FormacionAcademicas");
                 });
 
             modelBuilder.Entity("appGIUCT.Domain.Entities.IniciativaDeInvestigacion", b =>
