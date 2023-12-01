@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fran Lucich\\Desktop\\diseño\\formacion-academica\\appGIUCT2\\appGIUCT.csproj": {}
+    "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT2/appGIUCT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fran Lucich\\Desktop\\diseño\\formacion-academica\\appGIUCT2\\appGIUCT.csproj": {
+    "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT2/appGIUCT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fran Lucich\\Desktop\\diseño\\formacion-academica\\appGIUCT2\\appGIUCT.csproj",
+        "projectUniqueName": "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT2/appGIUCT.csproj",
         "projectName": "appGIUCT",
-        "projectPath": "C:\\Users\\Fran Lucich\\Desktop\\diseño\\formacion-academica\\appGIUCT2\\appGIUCT.csproj",
-        "packagesPath": "C:\\Users\\Fran Lucich\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fran Lucich\\Desktop\\diseño\\formacion-academica\\appGIUCT2\\obj\\",
+        "projectPath": "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT2/appGIUCT.csproj",
+        "packagesPath": "/home/franco/.nuget/packages/",
+        "outputPath": "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT2/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Fran Lucich\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/franco/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -84,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.114/RuntimeIdentifierGraph.json"
         }
       }
     }

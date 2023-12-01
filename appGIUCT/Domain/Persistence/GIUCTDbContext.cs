@@ -22,6 +22,7 @@ public class GIUCTDbContext : DbContext
     public DbSet<Universidad> Universidades {get; set;}
 
     public string DbPath { get; }
+    public object FormacionAcademicas { get; internal set; }
 
     public GIUCTDbContext(){
         var folder = Environment.SpecialFolder.LocalApplicationData;
@@ -31,7 +32,7 @@ public class GIUCTDbContext : DbContext
 
       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-    optionsBuilder.UseMySql("server=localhost;port=3309;database=FormA;user=root;password=Qzcb1357-",
+    optionsBuilder.UseMySql("server=localhost;port=3311;database=pruebaDis;user=root;password=Qzcb1357-",
         new MySqlServerVersion(new Version(8, 0, 34)));  
     }
 

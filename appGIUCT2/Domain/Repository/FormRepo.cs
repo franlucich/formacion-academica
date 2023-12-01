@@ -22,7 +22,7 @@ namespace appGIUCT.Domain.Repository
                  return await this.gIUCTDbContext.FormacionAcademicas.ToListAsync();
              }
             
-            public async Task<FormacionAcademica> GetFormacionAcademicaId(int idP)
+             public async Task<FormacionAcademica> GetFormacionAcademicaId(int idP)
              {
                  return await gIUCTDbContext.FormacionAcademicas.FirstOrDefaultAsync(f => f.Id == idP);
              }

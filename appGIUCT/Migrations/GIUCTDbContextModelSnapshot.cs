@@ -179,9 +179,6 @@ namespace appGIUCT.Migrations
                     b.Property<DateTime>("fechaInicio")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("pkFormacionAcademica")
-                        .HasColumnType("int");
-
                     b.Property<string>("titulo")
                         .IsRequired()
                         .HasColumnType("longtext");

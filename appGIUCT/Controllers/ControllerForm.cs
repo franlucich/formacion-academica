@@ -20,77 +20,104 @@ namespace ProveedorManagment.Ap.Controllers
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpGet]           //Devuelve todas la formaciones academicas
+        [HttpGet("{ensayocatedra}")]          //Devuelve todas la formaciones academicas
+         
+         public async Task<ActionResult<IEnumerable<FormacionAcademica>>> GetFormA()
+         {
+             try
+            {
+                return (await this.unitOfWork.FormRepo.GetFormA()).ToList();
+                
+            }
+             catch (Exception)
+             {
+                 return StatusCode(StatusCodes.Status500InternalServerError,"Error retrieving data from the database");
+             }
+         }
 
-        public async Task<ActionResult> GetFormA()
+        [HttpGet("{ensayocatedra}/{id:int}")]
+        public async Task<ActionResult<EnsayoCatedra>> GetFromId(int id)
         {
+             try
+             {
+                 var result = await unitOfWork.FormRepo.GetFormId(id);
+                 if (result == null) return NotFound("No se encontro ensayo de catedra con ese Id");
+
+                 return result;
+             }
+             catch (Exception)
+             {
+                 return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+             }
+        }
+
+        [HttpPost]
+
+            public async Task<ActionResult<EnsayoCatedra>> Create(EnsayoCatedra ensayo)
+            {
             try
             {
-                return Ok(await this.unitOfWork.FormRepo.GetFormA());
+                if (ensayo == null)
+                    return BadRequest();
+
+                var crearEnsayo = await unitOfWork.FormRepo.Add(ensayo);
+                await unitOfWork.CompleteAsync();
+
+                return CreatedAtAction(nameof(GetFormA),
+                    new { id = crearEnsayo?.Id }, crearEnsayo);
             }
             catch (Exception)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,"Error retrieving data from the database");
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error creating new employee record");
             }
         }
-        //  [HttpGet("{id:int}")]
-        // public async Task<ActionResult<Proveedor>> Get(int id)
-        // {
-        //     try
-        //     {
-        //         var result = await unitOfWork.Proveedors.GetProveedor(id);
-        //         if (result == null) return NotFound("No se encontro proveedor con ese Id");
 
-        //         return result;
-        //     }
-        //     catch (Exception)
-        //     {
-        //         return StatusCode(StatusCodes.Status500InternalServerError,
-        //             "Error retrieving data from the database");
-        //     }
-        // }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<EnsayoCatedra?>> Modificar(int id, EnsayoCatedra ensayo)
+        {
+            try
+            {
+                if (id != ensayo.Id)
+                    return BadRequest("Proveedor ID mismatch");
 
-        // [HttpPost]
-        // public async Task<ActionResult<Proveedor>> Create(Proveedor proveedor)
-        // {
-        //     try
-        //     {
-        //         if (proveedor == null)
-        //             return BadRequest();
+                var proveedorToUpdate = await unitOfWork.FormRepo.GetFormId(id);
 
-        //         var createdProveedor = await unitOfWork.Proveedors.Add(proveedor);
-        //         await unitOfWork.CompleteAsync();
+                if (proveedorToUpdate == null)
+                    return NotFound($"Proveedor with Id = {id} not found");
 
-        //         return CreatedAtAction(nameof(Get),
-        //             new { id = createdProveedor.Id }, createdProveedor);
-        //     }
-        //     catch (Exception)
-        //     {
-        //         return StatusCode(StatusCodes.Status500InternalServerError,
-        //             "Error al crear un nuevo proveedor");
-        //     }
-        // }
-        //    [HttpPut("{id}")]
-        // public async Task<ActionResult<Proveedor?>> Modificar(int id, Proveedor proveedor)
-        // {
-        //     try
-        //     {
-        //         if (id != proveedor.Id)
-        //             return BadRequest("Proveedor ID mismatch");
+                return await unitOfWork.FormRepo.Modificar(ensayo);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error updating data");
+            }
+        }
+        
 
-        //         var proveedorToUpdate = await unitOfWork.Proveedors.GetProveedor(id);
+        [HttpDelete("{id:int}")]
+    public async Task<ActionResult<EnsayoCatedra?>> EliminarForm(int id)
+    {
+        try
+        {
+            var eliminar = await unitOfWork.FormRepo.GetFormId(id);
 
-        //         if (proveedorToUpdate == null)
-        //             return NotFound($"Proveedor with Id = {id} not found");
+            if (eliminar == null)
+            {
+                return NotFound($"No se encontró ensayo con Id = {id}");
+            }
 
-        //         return await unitOfWork.Proveedors.Update(proveedor);
-        //     }
-        //     catch (Exception)
-        //     {
-        //         return StatusCode(StatusCodes.Status500InternalServerError,
-        //             "Error updating data");
-        //     }
+            return Ok(await unitOfWork.FormRepo.EliminarForm(id));             
+        }
 
-//        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error deleting data");
+        }
+    }
+
     }
 }

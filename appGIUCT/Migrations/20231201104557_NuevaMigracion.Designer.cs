@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace appGIUCT.Migrations
 {
     [DbContext(typeof(GIUCTDbContext))]
-    [Migration("20231128090414_NuevaMigracion")]
+    [Migration("20231201104557_NuevaMigracion")]
     partial class NuevaMigracion
     {
         /// <inheritdoc />
@@ -181,9 +181,6 @@ namespace appGIUCT.Migrations
 
                     b.Property<DateTime>("fechaInicio")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("pkFormacionAcademica")
-                        .HasColumnType("int");
 
                     b.Property<string>("titulo")
                         .IsRequired()

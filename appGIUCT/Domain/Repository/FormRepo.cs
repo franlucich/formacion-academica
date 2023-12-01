@@ -1,103 +1,90 @@
 using appGIUCT.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using appGIUCT.Domain.Repositores;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Serilog.Events;
 
 namespace appGIUCT.Domain.Repositores
 {
     public class FormRepo : IFormRepo
         {
-            private readonly GIUCTDbContext gIUCTDbContext1;
+            private readonly GIUCTDbContext gIUCTDbContext;
             public readonly ILogger _logger;
             
             public FormRepo(GIUCTDbContext gIUCTDbContext, ILogger logger)
             {
-                this.gIUCTDbContext1 =gIUCTDbContext;
+                this.gIUCTDbContext = gIUCTDbContext;
                 _logger = logger;
             }
-            public async Task<IEnumerable<FormacionAcademica>> GetFormA()
+            public async Task<IEnumerable<EnsayoCatedra>> GetFormA()
+             {
+                 return await this.gIUCTDbContext.EnsayoCatedra.ToListAsync();
+             }
+            
+            public async Task<EnsayoCatedra> GetFormId(int idP)
+             {
+                 return await gIUCTDbContext.EnsayoCatedra.FirstOrDefaultAsync(f => f.Id == idP);
+             }
+
+
+         public async Task<EnsayoCatedra?> Add(EnsayoCatedra ensayo) // Método asincrónico para agregar una nueva oferta a través del contexto de la base de datos
+             {
+                 var result = await gIUCTDbContext.EnsayoCatedra.AddAsync(ensayo); // Utiliza el método AddAsync del contexto de la base de datos para agregar la oferta de manera asincrónica
+
+                 return result.Entity;
+             }
+
+         public async Task<EnsayoCatedra> Modificar(EnsayoCatedra ensayo)
+        {
+            var result = await gIUCTDbContext.EnsayoCatedra
+                .FirstOrDefaultAsync(e => e.Id == ensayo.Id);
+
+            if (result != null)
             {
-                return await this.gIUCTDbContext1.FormacionAcademica.ToListAsync();
+                result.titulo = ensayo.titulo;
+                result.fechaFin = ensayo.fechaFin;
+             
+                await gIUCTDbContext.SaveChangesAsync();
+
+                return result;
             }
-            
-        //     public async Task<List<Oferta?>> GetOfertaActiva(int idP)
-        //     {
-        //         return await this.ecommerceDbContext.Ofertas
-        //         .Where(e => e.pkProveedor == idP && e.EstadoOferta == true)
-        //         .ToListAsync();
-        //     }
 
+            return null;
+        }
+         public async Task<EnsayoCatedra> ModEnsayo(EnsayoCatedra ensayo)
+        {
+            var result = await gIUCTDbContext.EnsayoCatedra
+                .FirstOrDefaultAsync(e => e.Id == ensayo.Id);
 
-        //     public async Task<Oferta?> GetOferta(int ofertaId)
-        //     {
-        //         return await this.ecommerceDbContext.Ofertas.FirstOrDefaultAsync(e => e.Id == ofertaId);
-        //     }
+            if (result != null)
+            {
+                result.titulo = ensayo.titulo;
+                result.fechaFin = ensayo.fechaFin;
+             
+                await gIUCTDbContext.SaveChangesAsync();
 
-        //     public async Task<Oferta?> Add(Oferta oferta) // Método asincrónico para agregar una nueva oferta a través del contexto de la base de datos
-        //     {
-        //         var result = await ecommerceDbContext.Ofertas.AddAsync(oferta); // Utiliza el método AddAsync del contexto de la base de datos para agregar la oferta de manera asincrónica
+                return result;
+            }
 
-        //         return result.Entity;
-        //     }
-        //     public async Task<Oferta?> Update(Oferta oferta)
-        //     {
-        //         var result = await ecommerceDbContext.Ofertas.FirstOrDefaultAsync(e => e.Id == oferta.Id);
+            return null;
+        }          
 
-        //         if(result != null)
-        //         {
-        //             result.NombreProducto = oferta.NombreProducto;
-        //             result.Descripcion = oferta.Descripcion;
-        //             result.Precio = oferta.Precio;
-        //             result.EstadoOferta = oferta.EstadoOferta;
-        //             result.stock = oferta.stock;
-        //             result.Proveedor = oferta.Proveedor; 
+         public async Task<IActionResult> EliminarForm(int id)
+        {
+            var result = await gIUCTDbContext.EnsayoCatedra
+                .FirstOrDefaultAsync(e => e.Id == id);
+            if (result != null)
+            {
+                gIUCTDbContext.EnsayoCatedra.Remove(result);
+                await gIUCTDbContext.SaveChangesAsync();
+                return new OkObjectResult("Eliminado con éxito");
 
-        //             await ecommerceDbContext.SaveChangesAsync();
+            }
 
-        //             return result;
-                    
-        //         }
-        //         return null;
-        //     }
-
-        //     public async Task<Oferta?> Upsert(Oferta entity)
-        //     {
-        //         try
-        //         {
-        //             var existingOferta = await ecommerceDbContext.Ofertas.Where(x => x.Id == entity.Id).FirstOrDefaultAsync();
-
-        //             if (existingOferta == null)
-        //                 return await Add(entity);
-                    
-        //             existingOferta.NombreProducto = entity.NombreProducto;
-        //             existingOferta.Descripcion = entity.Descripcion;
-        //             existingOferta.Precio = entity.Precio;
-        //             existingOferta.EstadoOferta = entity.EstadoOferta;
-        //             existingOferta.stock = entity.stock;
-        //             existingOferta.Proveedor = entity.Proveedor;
-
-        //             return existingOferta;
-        //         }
-        //         catch (Exception ex)
-        //         {
-        //             _logger.LogError(ex, "{Repo} Upsert function error", typeof(OfertaRepository));
-        //             return null;
-        //         }
-        //     }
-
-            
-
-        //     public async void Delete(int ofertaId)
-        //     {
-        //         var result = await ecommerceDbContext.Ofertas.FirstOrDefaultAsync(e => e.Id == ofertaId);
-        //         if (result != null)
-        //         {
-        //             ecommerceDbContext.Ofertas.Remove(result);
-        //             await ecommerceDbContext.SaveChangesAsync();
-        //         }
-        //     }
-
-            
+            return new NotFoundObjectResult($"No se encontró formacion academica con Id = {id}");
             
         }
+        }
 
-}
+       }
