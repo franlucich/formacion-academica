@@ -32,7 +32,7 @@ public class GIUCTDbContext : DbContext
 
       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-    optionsBuilder.UseMySql("server=localhost;port=3310;database=FormAc;user=root;password=Qzcb1357-",
+    optionsBuilder.UseMySql("server=localhost;port=3309;database=FormAc;user=root;password=Qzcb579-",
         new MySqlServerVersion(new Version(8, 0, 34)));  
     }
 

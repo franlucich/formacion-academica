@@ -6,6 +6,8 @@ import { TesisPosgradoCreateComponent } from "../tesis-posgrado-create/tesis-pos
 import { TesisPosgradoEditComponent } from "../tesis-posgrado-edit/tesis-posgrado-edit.component";
 import { TesisPosgradoDeleteComponent } from "../tesis-posgrado-delete/tesis-posgrado-delete.component";
 import { TesisPosgrado } from '../tesis-posgrado';
+import { Observable } from 'rxjs';
+import { TesisPosgradoService } from '../services/tesis-posgrado.service';
 
 @Component({
     selector: 'app-tesis-posgrado',
@@ -16,13 +18,17 @@ import { TesisPosgrado } from '../tesis-posgrado';
 })
 export class TesisPosgradoComponent {
     tesis: TesisPosgrado[]=[];
-
-    constructor(){
-      this.tesis.push(
-        { id: 1, titulo:"hola", nombre:"chau", apellido: "pepe", fechaini: new Date(0)},
-        { id: 2, titulo:"hola", nombre:"chau", apellido: "pepe", fechaini: new Date(0)},
-        { id: 3, titulo:"hola", nombre:"chau", apellido: "pepe", fechaini: new Date(0)},
-
-      );
+    tesis$: Observable<TesisPosgrado[]>;
+    constructor( private tesisposgradoService: TesisPosgradoService){
+        this.tesis$= this.tesisposgradoService.tesis();
       }
-    }
+    ngOnInit(): void {
+        this.tesis$.subscribe({
+          next: (value) => this.tesis = value,
+          error: (err) => console.log('Error:', err),
+          complete: () => {
+            console.log('Completed');
+          }
+        });
+      };
+}

@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
 import { TesisPosgrado } from '../tesis-posgrado';
+import { Observable } from 'rxjs';
+import { ApiService } from './api.service'; 
 
 @Injectable({
   providedIn: 'root'
 })
 export class TesisPosgradoService {
 
-  tesis: TesisPosgrado[] = [];
+
   ultimoid: number =0;
 
-  constructor() { }
+  constructor(private api: ApiService) { }
+  tesis(): Observable<TesisPosgrado[]>{
 
-  crearTesis(tesis:TesisPosgrado): TesisPosgradoService {
-    tesis.id == ++this.ultimoid;
-    this.tesis.push(tesis);
-    return this;
+    return this.api.tesis();
   }
 
-  get Tesis(){
-    return this.tesis;
-  }
+
 }

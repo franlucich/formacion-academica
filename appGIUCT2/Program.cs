@@ -9,9 +9,18 @@ var builder = WebApplication.CreateBuilder(args);
 var host = builder.Host;
 var configuration = builder.Configuration;
 var services = builder.Services;
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy  =>
+                      {
+                          policy.WithOrigins("*");
+                      });
+});
 
 services.AddDbContext<GIUCTDbContext>();
 services.AddEndpointsApiExplorer();
@@ -37,7 +46,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.MapControllers();
 
-
+app.UseCors(MyAllowSpecificOrigins);
 
 
 app.Run();

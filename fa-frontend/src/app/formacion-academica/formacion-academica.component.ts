@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from "../sidebar/sidebar.component";
 import { DataTableComponent } from "../data-table/data-table.component";
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 
 @Component({
     selector: 'app-formacion-academica',
@@ -12,5 +12,11 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
     imports: [CommonModule, SidebarComponent, DataTableComponent, RouterOutlet, RouterLink, RouterLinkActive]
 })
 export class FormacionAcademicaComponent {
-
-}
+   
+    constructor(
+        private router: Router) { }
+     
+      public ngOnInit(): void {
+         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      }
+    }
