@@ -1,5 +1,5 @@
 using appGIUCT.Domain.Entities;
-using appGIUCT.Domain.Repositores;
+using appGIUCT.Domain.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 
@@ -20,13 +20,13 @@ namespace ProveedorManagment.Ap.Controllers
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpGet("{practicaSupervisada}")]          //Devuelve todas la formaciones academicas
+        [HttpGet]          //Devuelve todas la formaciones academicas
          
-         public async Task<ActionResult<IEnumerable<FormacionAcademica>>> GetFormA()
+         public async Task<ActionResult<IEnumerable<FormacionAcademica>>> GetPract()
          {
              try
             {
-                return (await this.unitOfWork.FormRepo.GetFormA()).ToList();
+                return (await this.unitOfWork.practicaSupervisadaIngenieriaRepo.GetPracticaSupervisadaIngenieria()).ToList();
                 
             }
              catch (Exception)
@@ -35,12 +35,12 @@ namespace ProveedorManagment.Ap.Controllers
              }
          }
 
-        [HttpGet("{practicaSupervisada}/{id:int}")]
-        public async Task<ActionResult<PracticaSupervisadaIngenieria>> GetFromId(int id)
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<PracticaSupervisadaIngenieria>> GetPractId(int id)
         {
              try
              {
-                 var result = await unitOfWork.FormRepo.GetFormId(id);
+                 var result = await unitOfWork.practicaSupervisadaIngenieriaRepo.GetPracticaSupervisadaIngenieriaId(id);
                  if (result == null) return NotFound("No se encontro ensayo de catedra con ese Id");
 
                  return result;
@@ -61,10 +61,10 @@ namespace ProveedorManagment.Ap.Controllers
                 if (prs == null)
                     return BadRequest();
 
-                var crearEnsayo = await unitOfWork.FormRepo.Add(prs);
+                var crearEnsayo = await unitOfWork.practicaSupervisadaIngenieriaRepo.Add(prs);
                 await unitOfWork.CompleteAsync();
 
-                return CreatedAtAction(nameof(GetFormA),
+                return CreatedAtAction(nameof(GetPractId),
                     new { id = crearEnsayo?.Id }, crearEnsayo);
             }
             catch (Exception)
@@ -82,12 +82,12 @@ namespace ProveedorManagment.Ap.Controllers
                 if (id != prs.Id)
                     return BadRequest("Proveedor ID mismatch");
 
-                var proveedorToUpdate = await unitOfWork.FormRepo.GetFormId(id);
+                var proveedorToUpdate = await unitOfWork.practicaSupervisadaIngenieriaRepo.GetPracticaSupervisadaIngenieriaId(id);
 
                 if (proveedorToUpdate == null)
                     return NotFound($"Proveedor with Id = {id} not found");
 
-                return await unitOfWork.FormRepo.Modificar(prs);
+                return await unitOfWork.practicaSupervisadaIngenieriaRepo.Modificar(prs);
             }
             catch (Exception)
             {
@@ -102,14 +102,14 @@ namespace ProveedorManagment.Ap.Controllers
     {
         try
         {
-            var eliminar = await unitOfWork.FormRepo.GetFormId(id);
+            var eliminar = await unitOfWork.practicaProfesionalizanteRepo.GetPracticaProfesionalizanteId(id);
 
             if (eliminar == null)
             {
                 return NotFound($"No se encontró ensayo con Id = {id}");
             }
 
-            return Ok(await unitOfWork.FormRepo.EliminarForm(id));             
+            return Ok(await unitOfWork.practicaProfesionalizanteRepo.EliminarPracticaProfesionalizante(id));             
         }
 
         catch (Exception)

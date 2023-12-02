@@ -1,5 +1,5 @@
 using appGIUCT.Domain.Entities;
-using appGIUCT.Domain.Repositores;
+using appGIUCT.Domain.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 
@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace ProveedorManagment.Ap.Controllers
 {
-    [Route("api/formacionacademica")]
+    [Route("api/TesinaLicenciatura")]
     [ApiController]
     public class TesinaController : ControllerBase
     {
@@ -20,13 +20,13 @@ namespace ProveedorManagment.Ap.Controllers
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpGet("{tesina}")]          //Devuelve todas la formaciones academicas
+        [HttpGet]          //Devuelve todas la formaciones academicas
          
-         public async Task<ActionResult<IEnumerable<FormacionAcademica>>> GetFormA()
+         public async Task<ActionResult<IEnumerable<FormacionAcademica>>> GetTesina()
          {
              try
             {
-                return (await this.unitOfWork.FormRepo.GetFormA()).ToList();
+                return (await this.unitOfWork.tesinaLicenciatura.GetTesinaLicenciatura()).ToList();
                 
             }
              catch (Exception)
@@ -35,12 +35,12 @@ namespace ProveedorManagment.Ap.Controllers
              }
          }
 
-        [HttpGet("{tesina}/{id:int}")]
-        public async Task<ActionResult<TesinaLicenciatura>> GetFromId(int id)
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<TesinaLicenciatura>> GetTesinaId(int id)
         {
              try
              {
-                 var result = await unitOfWork.FormRepo.GetFormId(id);
+                 var result = await unitOfWork.tesinaLicenciatura.GetTesinaLicenciaturaId(id);
                  if (result == null) return NotFound("No se encontro ensayo de catedra con ese Id");
 
                  return result;
@@ -61,10 +61,10 @@ namespace ProveedorManagment.Ap.Controllers
                 if (tesina == null)
                     return BadRequest();
 
-                var crearTesina = await unitOfWork.FormRepo.Add(tesina);
+                var crearTesina = await unitOfWork.tesinaLicenciatura.Add(tesina);
                 await unitOfWork.CompleteAsync();
 
-                return CreatedAtAction(nameof(GetFormA),
+                return CreatedAtAction(nameof(GetTesinaId),
                     new { id = crearTesina?.Id }, crearTesina);
             }
             catch (Exception)
@@ -82,12 +82,12 @@ namespace ProveedorManagment.Ap.Controllers
                 if (id != tesina.Id)
                     return BadRequest("Proveedor ID mismatch");
 
-                var tesinaToUpdate = await unitOfWork.FormRepo.GetFormId(id);
+                var tesinaToUpdate = await unitOfWork.tesinaLicenciatura.GetTesinaLicenciaturaId(id);
 
                 if (tesinaToUpdate == null)
                     return NotFound($"Proveedor with Id = {id} not found");
 
-                return await unitOfWork.FormRepo.Modificar(tesina);
+                return await unitOfWork.tesinaLicenciatura.Modificar(tesina);
             }
             catch (Exception)
             {
@@ -102,14 +102,14 @@ namespace ProveedorManagment.Ap.Controllers
     {
         try
         {
-            var eliminar = await unitOfWork.FormRepo.GetFormId(id);
+            var eliminar = await unitOfWork.tesinaLicenciatura.GetTesinaLicenciaturaId(id);
 
             if (eliminar == null)
             {
                 return NotFound($"No se encontró ensayo con Id = {id}");
             }
 
-            return Ok(await unitOfWork.FormRepo.EliminarForm(id));             
+            return Ok(await unitOfWork.tesinaLicenciatura.EliminarTesinaLicenciatura(id));             
         }
 
         catch (Exception)

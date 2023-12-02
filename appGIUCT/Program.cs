@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using appGIUCT;
-using appGIUCT.Domain.Repositores;
+using appGIUCT.Domain.Repository;
 using appGIUCT.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);

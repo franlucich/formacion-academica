@@ -1,8 +1,14 @@
-using appGIUCT.Domain.Repositores;
+using appGIUCT.Domain.Repository;
+
 
 
 public interface IUnitOfWork
 {
-    IFormRepo FormRepo { get; }
+    IEnsayoCatedraRepo ensayoCatedraRepo {get;}
+    IPracticaProfesionalizanteRepo practicaProfesionalizanteRepo {get;}
+     IPracticaSupervisadaIngenieria practicaSupervisadaIngenieriaRepo {get;}
+     IProyectoFinalIngenieria proyectoFinalIngenieria {get; }
+     TesinaLicenciaturaRepo tesinaLicenciatura {get; }
+     TesisPosgradoRepo tesisPosgrado {get; }  
     Task CompleteAsync();
 }
