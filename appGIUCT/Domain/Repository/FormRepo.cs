@@ -1,11 +1,11 @@
 using appGIUCT.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using appGIUCT.Domain.Repositores;
+using appGIUCT.Domain.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Serilog.Events;
 
-namespace appGIUCT.Domain.Repositores
+namespace appGIUCT.Domain.Repository
 {
     public class FormRepo : IFormRepo
         {
@@ -17,33 +17,33 @@ namespace appGIUCT.Domain.Repositores
                 this.gIUCTDbContext = gIUCTDbContext;
                 _logger = logger;
             }
-            public async Task<IEnumerable<EnsayoCatedra>> GetFormA()
+            public async Task<IEnumerable<FormacionAcademica>> GetFormA()
              {
-                 return await this.gIUCTDbContext.EnsayoCatedra.ToListAsync();
+                 return await this.gIUCTDbContext.FormacionAcademicas.ToListAsync();
              }
             
-            public async Task<EnsayoCatedra> GetFormId(int idP)
+             public async Task<FormacionAcademica> GetFormacionAcademicaId(int idP)
              {
-                 return await gIUCTDbContext.EnsayoCatedra.FirstOrDefaultAsync(f => f.Id == idP);
+                 return await gIUCTDbContext.FormacionAcademicas.FirstOrDefaultAsync(f => f.Id == idP);
              }
 
 
-         public async Task<EnsayoCatedra?> Add(EnsayoCatedra ensayo) // Método asincrónico para agregar una nueva oferta a través del contexto de la base de datos
+             public async Task<FormacionAcademica?> Add(FormacionAcademica formacionAcademica) // Método asincrónico para agregar una nueva oferta a través del contexto de la base de datos
              {
-                 var result = await gIUCTDbContext.EnsayoCatedra.AddAsync(ensayo); // Utiliza el método AddAsync del contexto de la base de datos para agregar la oferta de manera asincrónica
+                 var result = await gIUCTDbContext.FormacionAcademicas.AddAsync(formacionAcademica); // Utiliza el método AddAsync del contexto de la base de datos para agregar la oferta de manera asincrónica
 
                  return result.Entity;
              }
 
-         public async Task<EnsayoCatedra> Modificar(EnsayoCatedra ensayo)
+         public async Task<FormacionAcademica> Modificar(FormacionAcademica formacionAcademica)
         {
-            var result = await gIUCTDbContext.EnsayoCatedra
-                .FirstOrDefaultAsync(e => e.Id == ensayo.Id);
+            var result = await gIUCTDbContext.FormacionAcademicas
+                .FirstOrDefaultAsync(e => e.Id == formacionAcademica.Id);
 
             if (result != null)
             {
-                result.titulo = ensayo.titulo;
-                result.fechaFin = ensayo.fechaFin;
+                result.titulo = formacionAcademica.titulo;
+                result.fechaFin = formacionAcademica.fechaFin;
              
                 await gIUCTDbContext.SaveChangesAsync();
 
@@ -51,32 +51,15 @@ namespace appGIUCT.Domain.Repositores
             }
 
             return null;
-        }
-         public async Task<EnsayoCatedra> ModEnsayo(EnsayoCatedra ensayo)
+        }     
+
+    public async Task<IActionResult> EliminarForm(int id)
         {
-            var result = await gIUCTDbContext.EnsayoCatedra
-                .FirstOrDefaultAsync(e => e.Id == ensayo.Id);
-
-            if (result != null)
-            {
-                result.titulo = ensayo.titulo;
-                result.fechaFin = ensayo.fechaFin;
-             
-                await gIUCTDbContext.SaveChangesAsync();
-
-                return result;
-            }
-
-            return null;
-        }          
-
-         public async Task<IActionResult> EliminarForm(int id)
-        {
-            var result = await gIUCTDbContext.EnsayoCatedra
+            var result = await gIUCTDbContext.FormacionAcademicas
                 .FirstOrDefaultAsync(e => e.Id == id);
             if (result != null)
             {
-                gIUCTDbContext.EnsayoCatedra.Remove(result);
+                gIUCTDbContext.FormacionAcademicas.Remove(result);
                 await gIUCTDbContext.SaveChangesAsync();
                 return new OkObjectResult("Eliminado con éxito");
 
@@ -86,5 +69,4 @@ namespace appGIUCT.Domain.Repositores
             
         }
         }
-
-       }
+}

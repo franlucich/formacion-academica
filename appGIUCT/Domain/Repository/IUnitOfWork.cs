@@ -1,4 +1,5 @@
-using appGIUCT.Domain.Repositores;
+using appGIUCT.Domain.Repository;
+
 
 
 public interface IUnitOfWork

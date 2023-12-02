@@ -1,14 +1,13 @@
 using appGIUCT.Domain.Entities;
-
 using Microsoft.AspNetCore.Mvc;
 
-namespace appGIUCT.Domain.Repositores{
+namespace appGIUCT.Domain.Repository{
     public interface IFormRepo
     {
-         Task<IEnumerable<EnsayoCatedra>> GetFormA();
-        Task<EnsayoCatedra> GetFormId( int id);
-        Task<EnsayoCatedra?> Add(EnsayoCatedra ensayo);
-        Task<EnsayoCatedra?> Modificar(EnsayoCatedra ensayo);
+        Task<IEnumerable<FormacionAcademica>> GetFormA();
+        Task<FormacionAcademica?> GetFormacionAcademicaId( int idP);
+        Task<FormacionAcademica> Add(FormacionAcademica formacionAcademica);
+        Task<FormacionAcademica> Modificar(FormacionAcademica formacionAcademica);
         Task<IActionResult> EliminarForm(int id);
     }
 }
