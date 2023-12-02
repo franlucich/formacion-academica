@@ -9,18 +9,18 @@ using Microsoft.AspNetCore.Http;
 
 namespace ProveedorManagment.Ap.Controllers
 {
-    [Route("api/formacionacademica")]
+    [Route("api/ProyectoFinalIngenieria")]
     [ApiController]
-    public class ProveedorController : ControllerBase
+    public class ProyFinontroller : ControllerBase
     {
         private readonly IUnitOfWork unitOfWork;
 
-        public ProveedorController(IUnitOfWork unitOfWork)
+        public ProyFinontroller(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpGet("{ensayocatedra}")]          //Devuelve todas la formaciones academicas
+        [HttpGet("{proyectofinal}")]          //Devuelve todas la formaciones academicas
          
          public async Task<ActionResult<IEnumerable<FormacionAcademica>>> GetFormA()
          {
@@ -35,8 +35,8 @@ namespace ProveedorManagment.Ap.Controllers
              }
          }
 
-        [HttpGet("{ensayocatedra}/{id:int}")]
-        public async Task<ActionResult<EnsayoCatedra>> GetFromId(int id)
+        [HttpGet("{proyectofinal}/{id:int}")]
+        public async Task<ActionResult<ProyectoFinalIngenieria>> GetFromId(int id)
         {
              try
              {
@@ -54,14 +54,14 @@ namespace ProveedorManagment.Ap.Controllers
 
         [HttpPost]
 
-            public async Task<ActionResult<EnsayoCatedra>> Create(EnsayoCatedra ensayo)
+            public async Task<ActionResult<ProyectoFinalIngenieria>> Create(ProyectoFinalIngenieria proyecto)
             {
             try
             {
-                if (ensayo == null)
+                if (proyecto == null)
                     return BadRequest();
 
-                var crearEnsayo = await unitOfWork.FormRepo.Add(ensayo);
+                var crearEnsayo = await unitOfWork.FormRepo.Add(proyecto);
                 await unitOfWork.CompleteAsync();
 
                 return CreatedAtAction(nameof(GetFormA),
@@ -75,11 +75,11 @@ namespace ProveedorManagment.Ap.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<EnsayoCatedra?>> Modificar(int id, EnsayoCatedra ensayo)
+        public async Task<ActionResult<ProyectoFinalIngenieria?>> Modificar(int id, ProyectoFinalIngenieria proyecto)
         {
             try
             {
-                if (id != ensayo.Id)
+                if (id != proyecto.Id)
                     return BadRequest("Proveedor ID mismatch");
 
                 var proveedorToUpdate = await unitOfWork.FormRepo.GetFormId(id);
@@ -87,7 +87,7 @@ namespace ProveedorManagment.Ap.Controllers
                 if (proveedorToUpdate == null)
                     return NotFound($"Proveedor with Id = {id} not found");
 
-                return await unitOfWork.FormRepo.Modificar(ensayo);
+                return await unitOfWork.FormRepo.Modificar(proyecto);
             }
             catch (Exception)
             {
@@ -98,7 +98,7 @@ namespace ProveedorManagment.Ap.Controllers
         
 
         [HttpDelete("{id:int}")]
-    public async Task<ActionResult<EnsayoCatedra?>> EliminarForm(int id)
+    public async Task<ActionResult<ProyectoFinalIngenieria?>> EliminarForm(int id)
     {
         try
         {

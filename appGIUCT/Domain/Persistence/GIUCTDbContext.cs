@@ -116,21 +116,21 @@ modelBuilder.Entity<PersonaIniciat>()
     
 
 
-     // Configuración para la relación uno a muchos (un director puede estar asociado a más de un PID)
+     // Relación uno a muchos (un director puede estar asociado a más de un PID)
         modelBuilder.Entity<Person>()
             .HasMany(p => p.PIDsDirigidos)
             .WithOne(pid => pid.Director)
             .HasForeignKey(pid => pid.DirectorId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // Configuración para la relación muchos a uno (un PID tiene un director)
+        // Relación muchos a uno (un PID tiene un director)
         modelBuilder.Entity<Pid>()
             .HasOne(pid => pid.Director)
             .WithMany(p => p.PIDsDirigidos)
             .HasForeignKey(pid => pid.DirectorId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // Configuración para la relación muchos a muchos (un PID puede tener varios integrantes)
+        //Relación muchos a muchos (un PID puede tener varios integrantes)
         modelBuilder.Entity<PersonaPID>()
             .HasKey(pp => new { pp.PersonaId, pp.PIDId });
 
