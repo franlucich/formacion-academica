@@ -1,1 +1,64 @@
-<p>practica-profesionalizante-create works!</p>
+<div class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Práctica Profesionalizante</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3 row">
+            <label for="titulo" class="col-md-4 col-form-label text-md-end text-start">Título</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="titulo" name="titulo">
+            </div>   
+          </div>
+          <div class="mb-3 row">
+            <label for="persona" class="col-md-4 col-form-label text-md-end text-start">Persona</label>
+            <div class="col-md-6">
+              <select class="form-control" type="dropdown"id="persona" name="persona">
+                <option selected>Seleccione una persona</option>
+                <option value="">aaa</option>
+              </select>
+            </div>   
+          </div>
+          <div class="mb-3 row">
+            <label for="facultad" class="col-md-4 col-form-label text-md-end text-start">Facultad</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="facultad" name="facultad">
+            </div>   
+          </div>
+          <div class="mb-3 row">
+            <label for="fechaIni" class="col-md-4 col-form-label text-md-end text-start">Fecha de Inicio</label>
+            <div class="col-md-6">
+              <input type="date" class="form-control" id="fechaIni" name="fechaIni">
+            </div>   
+          </div>
+          <div class="mb-3 row">
+            <label for="fechaFin" class="col-md-4 col-form-label text-md-end text-start">Fecha de Fin</label>
+            <div class="col-md-6">
+              <input type="date" class="form-control" id="fechaFin" name="fechaFin">
+            </div>   
+          </div>
+          <div class="mb-3 row">
+            <label for="pid" class="col-md-4 col-form-label text-md-end text-start">PID</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="pid" name="pid">
+            </div>   
+          </div>
+          <div class="mb-3 row">
+            <label for="iniInves" class="col-md-4 col-form-label text-md-end text-start">Iniciativa de Investigación</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="iniInves" name="iniInves">
+            </div>   
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-verde-success">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
