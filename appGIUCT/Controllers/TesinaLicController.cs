@@ -119,5 +119,21 @@ namespace ProveedorManagment.Ap.Controllers
         }
     }
 
+    public async Task<ActionResult<Facultad>> GetFacultad(int id)
+        {
+             try
+             {
+                 var result = await unitOfWork.tesinaLicenciatura.GetFacultad(id);
+                 if (result == null) return NotFound("No se encontro ensayo de catedra con ese Id");
+
+                 return result;
+             }
+             catch (Exception)
+             {
+                 return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+             }
+        }
     }
+
 }

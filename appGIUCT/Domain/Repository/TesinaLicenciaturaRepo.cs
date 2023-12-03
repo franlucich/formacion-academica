@@ -27,6 +27,10 @@ namespace appGIUCT.Domain.Repository
                  return await gIUCTDbContext.TesinaLicenciatura.FirstOrDefaultAsync(f => f.Id == idP);
              }
 
+            public async Task<Facultad> GetFacultad(int idP)
+             {
+                 return await gIUCTDbContext.Facultad.FirstOrDefaultAsync(f => f.Id == idP);
+             }
 
              public async Task<TesinaLicenciatura?> Add(TesinaLicenciatura tesinaLicenciatura) // Método asincrónico para agregar una nueva oferta a través del contexto de la base de datos
              {
