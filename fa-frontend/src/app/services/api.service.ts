@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
-import { TesisPosgrado } from '../tesis-posgrado';
 
 
-const API_URL = environment.apiUrl + "/api/formacionacademica"
+const API_URL = environment.apiUrl
 @Injectable({
   providedIn: 'root'
 })
@@ -14,8 +13,40 @@ export class ApiService {
 
   constructor(private httpClient:HttpClient) { }
 
-  tesis(): Observable<TesisPosgrado[]>{
-    return this.httpClient.get<TesisPosgrado[]>(API_URL);
+  tesisPosgrado(): Observable<any[]>{
+    return this.httpClient.get<any[]>(API_URL + "/api/tesisPosgrado");
   }
-
+  deleteTesisPosgrado(id: number){
+    return this.httpClient.delete(API_URL + '/api/tesisPosgrado/'+ id);
+  }
+  ensayoCatedra(): Observable<any[]>{
+    return this.httpClient.get<any[]>(API_URL + "/api/ensayoCatedra");
+  }
+  deleteEnsayoCatedra(id: number){
+    return this.httpClient.delete(API_URL + '/api/ensayoCatedra/'+ id);
+  }
+  practicaProfesionalizante(): Observable<any[]>{
+    return this.httpClient.get<any[]>(API_URL + "/api/PracticaProfesionalizante");
+  }
+  deletePracticaProfesionalizante(id: number){
+    return this.httpClient.delete(API_URL + '/api/PracticaProfesionalizante/'+ id);
+  }
+  practicaSupervisada(): Observable<any[]>{
+    return this.httpClient.get<any[]>(API_URL + "/api/practicaSupervisada");
+  }
+  deletePracticaSupervisada(id: number){
+    return this.httpClient.delete(API_URL + '/api/practicaSupervisada/'+ id);
+  }
+  proyectoFinalIngenieria(): Observable<any[]>{
+    return this.httpClient.get<any[]>(API_URL + "/api/ProyectoFinalIngenieria");
+  }
+  deleteProyectoFinalIngenieria(id: number){
+    return this.httpClient.delete(API_URL + '/api/ProyectoFinalIngenieria/'+ id);
+  }
+  tesinaLicenciatura(): Observable<any[]>{
+    return this.httpClient.get<any[]>(API_URL + "/api/TesinaLicenciatura");
+  }
+  deleteTesinaLicenciatura(id: number){
+    return this.httpClient.delete(API_URL + '/api/TesinaLicenciatura/'+ id);
+  }
 }

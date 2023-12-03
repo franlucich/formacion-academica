@@ -35,7 +35,7 @@
                         <td>{{ item.titulo }}</td>
                         <td>
                             <button class="btn btn-outline-warning btn-sm mx-2" type="button" data-bs-toggle="modal" data-bs-target="#modalEdit"><i class="bi bi-pencil-square"></i></button>
-                            <button class="btn btn-outline-rojo-warning btn-sm"type="button" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-outline-rojo-warning btn-sm"type="button" (click)='deleteFA(item.id)'><i class="bi bi-trash"></i></button>
                         </td>
                 </tr>
 
