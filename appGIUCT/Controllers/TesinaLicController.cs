@@ -80,12 +80,12 @@ namespace ProveedorManagment.Ap.Controllers
             try
             {
                 if (id != tesina.Id)
-                    return BadRequest("Proveedor ID mismatch");
+                    return BadRequest("Tesina ID mismatch");
 
                 var tesinaToUpdate = await unitOfWork.tesinaLicenciatura.GetTesinaLicenciaturaId(id);
 
                 if (tesinaToUpdate == null)
-                    return NotFound($"Proveedor with Id = {id} not found");
+                    return NotFound($"Tesina with Id = {id} not found");
 
                 return await unitOfWork.tesinaLicenciatura.Modificar(tesina);
             }
@@ -106,7 +106,7 @@ namespace ProveedorManagment.Ap.Controllers
 
             if (eliminar == null)
             {
-                return NotFound($"No se encontró ensayo con Id = {id}");
+                return NotFound($"No se encontró tesina con Id = {id}");
             }
 
             return Ok(await unitOfWork.tesinaLicenciatura.EliminarTesinaLicenciatura(id));             
@@ -124,7 +124,7 @@ namespace ProveedorManagment.Ap.Controllers
              try
              {
                  var result = await unitOfWork.tesinaLicenciatura.GetFacultad(id);
-                 if (result == null) return NotFound("No se encontro ensayo de catedra con ese Id");
+                 if (result == null) return NotFound("No se encontro tesina con ese Id");
 
                  return result;
              }

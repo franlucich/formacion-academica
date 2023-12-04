@@ -20,8 +20,7 @@ namespace PracticaProfManagment.Ap.Controllers
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpGet]          //Devuelve todas la formaciones academicas
-         
+        [HttpGet]       
          public async Task<ActionResult<IEnumerable<FormacionAcademica>>> GetFormA()
          {
              try

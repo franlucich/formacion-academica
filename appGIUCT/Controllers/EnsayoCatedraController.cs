@@ -69,7 +69,7 @@ namespace ProveedorManagment.Ap.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error creating new employee record");
+                    "Error creating new ensayo catedra");
             }
         }
 

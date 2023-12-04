@@ -70,7 +70,7 @@ namespace ProveedorManagment.Ap.Controllers
                 catch (Exception)
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError,
-                        "Error creating new employee record");
+                        "Error creating new proyecto");
                 }
             }
 
@@ -80,14 +80,14 @@ namespace ProveedorManagment.Ap.Controllers
             try
             {
                 if (id != proyecto.Id)
-                    return BadRequest("Proveedor ID mismatch");
+                    return BadRequest("Proyecto ID mismatch");
 
-                var proveedorToUpdate = await unitOfWork.proyectoFinalIngenieria.GetProyectoFinalIngenieriaId(id);
+                var proy = await unitOfWork.proyectoFinalIngenieria.GetProyectoFinalIngenieriaId(id);
 
-                if (proveedorToUpdate == null)
-                    return NotFound($"Proveedor with Id = {id} not found");
+                if (proy == null)
+                    return NotFound($"Proyecto with Id = {id} not found");
 
-                return await unitOfWork.proyectoFinalIngenieria.Modificar(proyecto);
+                return await unitOfWork.proyectoFinalIngenieria.Modificar(proy);
             }
             catch (Exception)
             {
@@ -106,7 +106,7 @@ namespace ProveedorManagment.Ap.Controllers
 
             if (eliminar == null)
             {
-                return NotFound($"No se encontró ensayo con Id = {id}");
+                return NotFound($"No se encontró proyecto con Id = {id}");
             }
 
             return Ok(await unitOfWork.proyectoFinalIngenieria.EliminarProyectoFinalIngenieria(id));             

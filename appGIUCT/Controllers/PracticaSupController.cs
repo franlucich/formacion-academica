@@ -41,7 +41,7 @@ namespace ProveedorManagment.Ap.Controllers
              try
              {
                  var result = await unitOfWork.practicaSupervisadaIngenieriaRepo.GetPracticaSupervisadaIngenieriaId(id);
-                 if (result == null) return NotFound("No se encontro ensayo de catedra con ese Id");
+                 if (result == null) return NotFound("No se encontro practica supervisada con ese Id");
 
                  return result;
              }
@@ -70,7 +70,7 @@ namespace ProveedorManagment.Ap.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error creating new employee record");
+                    "Error creating new practica");
             }
         }
 
@@ -80,12 +80,12 @@ namespace ProveedorManagment.Ap.Controllers
             try
             {
                 if (id != prs.Id)
-                    return BadRequest("Proveedor ID mismatch");
+                    return BadRequest("Practica ID mismatch");
 
                 var proveedorToUpdate = await unitOfWork.practicaSupervisadaIngenieriaRepo.GetPracticaSupervisadaIngenieriaId(id);
 
                 if (proveedorToUpdate == null)
-                    return NotFound($"Proveedor with Id = {id} not found");
+                    return NotFound($"Practica with Id = {id} not found");
 
                 return await unitOfWork.practicaSupervisadaIngenieriaRepo.Modificar(prs);
             }
@@ -106,7 +106,7 @@ namespace ProveedorManagment.Ap.Controllers
 
             if (eliminar == null)
             {
-                return NotFound($"No se encontró ensayo con Id = {id}");
+                return NotFound($"No se encontró practica con Id = {id}");
             }
 
             return Ok(await unitOfWork.practicaProfesionalizanteRepo.EliminarPracticaProfesionalizante(id));             

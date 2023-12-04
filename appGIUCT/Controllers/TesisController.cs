@@ -20,7 +20,7 @@ namespace ProveedorManagment.Ap.Controllers
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpGet]          //Devuelve todas la formaciones academicas
+        [HttpGet]
          
          public async Task<ActionResult<IEnumerable<FormacionAcademica>>> GetFormA()
          {
@@ -41,7 +41,7 @@ namespace ProveedorManagment.Ap.Controllers
              try
              {
                  var result = await unitOfWork.tesisPosgrado.GetTesisPosgradoId(id);
-                 if (result == null) return NotFound("No se encontro ensayo de catedra con ese Id");
+                 if (result == null) return NotFound("No se encontro tesis con ese Id");
 
                  return result;
              }
@@ -81,12 +81,12 @@ namespace ProveedorManagment.Ap.Controllers
             try
             {
                 if (id != tesis.Id)
-                    return BadRequest("Proveedor ID mismatch");
+                    return BadRequest("Tesis ID mismatch");
 
                 var proveedorToUpdate = await unitOfWork.tesisPosgrado.GetTesisPosgradoId(id);
 
                 if (proveedorToUpdate == null)
-                    return NotFound($"Proveedor with Id = {id} not found");
+                    return NotFound($"Tesis with Id = {id} not found");
 
                 return await unitOfWork.tesisPosgrado.Modificar(tesis);
             }
@@ -107,7 +107,7 @@ namespace ProveedorManagment.Ap.Controllers
 
             if (eliminar == null)
             {
-                return NotFound($"No se encontró ensayo con Id = {id}");
+                return NotFound($"No se encontró tesis con Id = {id}");
             }
 
             return Ok(await unitOfWork.tesisPosgrado.EliminarTesisPosgrado(id));             
