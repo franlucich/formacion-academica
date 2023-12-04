@@ -14,6 +14,7 @@ namespace ProveedorManagment.Ap.Controllers
     public class EnsayoController : ControllerBase
     {
         private readonly IUnitOfWork unitOfWork;
+   
 
         public EnsayoController(IUnitOfWork unitOfWork)
         {

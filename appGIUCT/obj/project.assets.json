@@ -2411,19 +2411,19 @@
     ]
   },
   "packageFolders": {
-    "/home/franco/.nuget/packages/": {}
+    "C:\\Users\\Fran Lucich\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/appGIUCT.csproj",
+      "projectUniqueName": "C:\\Users\\Fran Lucich\\Desktop\\diseño\\formacion-academica\\appGIUCT\\appGIUCT.csproj",
       "projectName": "appGIUCT",
-      "projectPath": "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/appGIUCT.csproj",
-      "packagesPath": "/home/franco/.nuget/packages/",
-      "outputPath": "/home/franco/Documentos/Diseño de Sistemas/Trabajo de Campo/formacion-academica/appGIUCT/obj/",
+      "projectPath": "C:\\Users\\Fran Lucich\\Desktop\\diseño\\formacion-academica\\appGIUCT\\appGIUCT.csproj",
+      "packagesPath": "C:\\Users\\Fran Lucich\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Fran Lucich\\Desktop\\diseño\\formacion-academica\\appGIUCT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/franco/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Fran Lucich\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -2493,7 +2493,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.114/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
