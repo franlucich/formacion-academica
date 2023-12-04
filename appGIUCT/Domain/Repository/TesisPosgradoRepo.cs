@@ -28,10 +28,11 @@ namespace appGIUCT.Domain.Repository
              }
 
 
-             public async Task<TesisPosgrado?> Add(TesisPosgrado tesisPosgrado) // Método asincrónico para agregar una nueva oferta a través del contexto de la base de datos
+             public async Task<TesisPosgrado> Add(TesisPosgrado tesisPosgrado)
              {
-                 var result = await gIUCTDbContext.TesisPosgrado.AddAsync(tesisPosgrado); // Utiliza el método AddAsync del contexto de la base de datos para agregar la oferta de manera asincrónica
+                 var result = await gIUCTDbContext.TesisPosgrado.AddAsync(tesisPosgrado);
 
+                await gIUCTDbContext.SaveChangesAsync();
                  return result.Entity;
              }
 

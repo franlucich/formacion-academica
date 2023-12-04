@@ -6,7 +6,6 @@ namespace appGIUCT.Domain.Entities
             docente = null;
             tutor = null;
         }
-        public override string TipoForm => "PracticaProfecionalizante";
         public Person docente {get; set;}
         public Person tutor {get; set;}
 

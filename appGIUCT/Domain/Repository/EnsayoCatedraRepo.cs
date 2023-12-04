@@ -28,13 +28,13 @@ namespace appGIUCT.Domain.Repository
              }
 
 
-             public async Task<EnsayoCatedra?> Add(EnsayoCatedra ensayoCatedra) // Método asincrónico para agregar una nueva oferta a través del contexto de la base de datos
-             {
-                 var result = await gIUCTDbContext.EnsayoCatedra.AddAsync(ensayoCatedra); // Utiliza el método AddAsync del contexto de la base de datos para agregar la oferta de manera asincrónica
+                public async Task<EnsayoCatedra?> Add(EnsayoCatedra ensayo)
+                {
+                    var result = await gIUCTDbContext.EnsayoCatedra.AddAsync(ensayo);
 
-                 return result.Entity;
-             }
-
+                    await gIUCTDbContext.SaveChangesAsync();
+                    return result.Entity;
+                }
          public async Task<EnsayoCatedra> Modificar(EnsayoCatedra ensayoCatedra)
         {
             var result = await gIUCTDbContext.EnsayoCatedra

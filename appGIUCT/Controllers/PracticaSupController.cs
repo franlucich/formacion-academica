@@ -54,7 +54,7 @@ namespace ProveedorManagment.Ap.Controllers
 
         [HttpPost]
 
-            public async Task<ActionResult<PracticaSupervisadaIngenieria>> Create(PracticaSupervisadaIngenieria prs)
+            public async Task<ActionResult<PracticaSupervisadaIngenieria?>> Create(PracticaSupervisadaIngenieria prs)
             {
             try
             {

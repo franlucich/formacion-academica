@@ -54,7 +54,7 @@ namespace PracticaProfManagment.Ap.Controllers
 
         [HttpPost]
 
-            public async Task<ActionResult<PracticaProfesionalizante>> Create(PracticaProfesionalizante practica)
+            public async Task<ActionResult<PracticaProfesionalizante?>> Create(PracticaProfesionalizante practica)
             {
             try
             {
@@ -80,12 +80,12 @@ namespace PracticaProfManagment.Ap.Controllers
             try
             {
                 if (id != practica.Id)
-                    return BadRequest("Proveedor ID mismatch");
+                    return BadRequest("Practica Profesionalizante ID mismatch");
 
                 var proveedorToUpdate = await unitOfWork.practicaProfesionalizanteRepo.GetPracticaProfesionalizanteId(id);
 
                 if (proveedorToUpdate == null)
-                    return NotFound($"Proveedor with Id = {id} not found");
+                    return NotFound($"No se encontro Practica Profesionalizante con id {id}");
 
                 return await unitOfWork.practicaProfesionalizanteRepo.Modificar(practica);
             }

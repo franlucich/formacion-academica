@@ -32,10 +32,11 @@ namespace appGIUCT.Domain.Repository
                  return await gIUCTDbContext.Facultad.FirstOrDefaultAsync(f => f.Id == idP);
              }
 
-             public async Task<TesinaLicenciatura?> Add(TesinaLicenciatura tesinaLicenciatura) // Método asincrónico para agregar una nueva oferta a través del contexto de la base de datos
+             public async Task<TesinaLicenciatura> Add(TesinaLicenciatura tesinaLicenciatura) // Método asincrónico para agregar una nueva oferta a través del contexto de la base de datos
              {
                  var result = await gIUCTDbContext.TesinaLicenciatura.AddAsync(tesinaLicenciatura); // Utiliza el método AddAsync del contexto de la base de datos para agregar la oferta de manera asincrónica
 
+                await gIUCTDbContext.SaveChangesAsync();
                  return result.Entity;
              }
 

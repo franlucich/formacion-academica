@@ -32,6 +32,7 @@ namespace appGIUCT.Domain.Repository
              {
                  var result = await gIUCTDbContext.PracticaProfesionalizante.AddAsync(practicaProfesionalizante); // Utiliza el método AddAsync del contexto de la base de datos para agregar la oferta de manera asincrónica
 
+                await gIUCTDbContext.SaveChangesAsync();
                  return result.Entity;
              }
 

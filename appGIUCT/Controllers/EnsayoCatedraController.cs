@@ -20,9 +20,9 @@ namespace ProveedorManagment.Ap.Controllers
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpGet]          //Devuelve todas la formaciones academicas
+        [HttpGet]          
          
-         public async Task<ActionResult<IEnumerable<FormacionAcademica>>> GetEnsayo()
+         public async Task<ActionResult<IEnumerable<EnsayoCatedra>>> GetEnsayo()
          {
              try
             {
@@ -55,18 +55,16 @@ namespace ProveedorManagment.Ap.Controllers
 
         [HttpPost]
 
-            public async Task<ActionResult<EnsayoCatedra>> Create(EnsayoCatedra ensayo)
+            public async Task<ActionResult<EnsayoCatedra>> Create([FromBody]EnsayoCatedra ensayo)
             {
             try
             {
                 if (ensayo == null)
-                    return BadRequest();
+                    return BadRequest("No match");
 
                 var crearEnsayo = await unitOfWork.ensayoCatedraRepo.Add(ensayo);
-                await unitOfWork.CompleteAsync();
-
-                return CreatedAtAction(nameof(GetEnsayo),
-                    new { id = crearEnsayo?.Id }, crearEnsayo);
+                return CreatedAtAction(nameof(GetEnsayoId),
+                    new { id = crearEnsayo.Id }, crearEnsayo);
             }
             catch (Exception)
             {
@@ -81,12 +79,12 @@ namespace ProveedorManagment.Ap.Controllers
             try
             {
                 if (id != ensayo.Id)
-                    return BadRequest("Proveedor ID mismatch");
+                    return BadRequest("No se encontro ensayo ");
 
                 var proveedorToUpdate = await unitOfWork.ensayoCatedraRepo.GetEnsayoCatedraId(id);
 
                 if (proveedorToUpdate == null)
-                    return NotFound($"Proveedor with Id = {id} not found");
+                    return NotFound($"Ensayo catedra con id {id} no se encontro");
 
                 return await unitOfWork.ensayoCatedraRepo.Modificar(ensayo);
             }

@@ -52,25 +52,17 @@ public class GIUCTDbContext : DbContext
     .HasOne(fa => fa.IniciativaDeInvestigacion)
     .WithOne()
     .HasForeignKey<IniciativaDeInvestigacion>(ii => ii.Id);
-
+    
 
  //RELACION MUCHOS A MUCHOS PERSONA FORM ACADEMICA
 
     modelBuilder.Entity<Person>()
     .HasMany(p => p.FormacionesAcademicas)
     .WithMany(fa => fa.persona)
-    .UsingEntity(j => j.ToTable("PersonFormacionAcademica"));
+    .UsingEntity(j => j.ToTable("PersonFormacionAcademica"))
+        
+    ;
    
-    
-    
-
-    //RELACION UNO A UNO ENTRE FORMACION ACADEMICA Y PID
-    
-    modelBuilder.Entity<FormacionAcademica>()
-    .HasOne(fa => fa.Pid)
-    .WithOne(pid => pid.formacionAcademica)
-    .HasForeignKey<Pid>(pid => pid.pkFormacionAcademica);
-
 
 modelBuilder.Entity<PersonaIniciat>()
     .HasOne(pi => pi.person)
@@ -80,7 +72,7 @@ modelBuilder.Entity<PersonaIniciat>()
 modelBuilder.Entity<PersonaIniciat>()
     .HasOne(pi => pi.iniciativaDeInvestigacion)
     .WithMany(ii => ii.persona)
-    .HasForeignKey(pi => pi.pkIniciativa); 
+    .HasForeignKey(pi => pi.pkIniciativa);
 
 
     
@@ -128,7 +120,9 @@ modelBuilder.Entity<PersonaIniciat>()
             .HasOne(pid => pid.Director)
             .WithMany(p => p.PIDsDirigidos)
             .HasForeignKey(pid => pid.DirectorId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Restrict)
+    
+           .IsRequired(false);
 
         //Relación muchos a muchos (un PID puede tener varios integrantes)
         modelBuilder.Entity<PersonaPID>()

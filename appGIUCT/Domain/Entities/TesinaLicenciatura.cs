@@ -6,7 +6,6 @@ namespace appGIUCT.Domain.Entities
             director = null;
             fuenteFinanciamiento = "";
         }
-        public override string TipoForm => "TesinaLicenciatura";
         public Person director {get; set;}
         public string fuenteFinanciamiento {get; set;}
        

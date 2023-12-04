@@ -7,9 +7,8 @@ namespace appGIUCT.Domain.Entities
             docente = null;
             tutor = null;
         }
-        public override string TipoForm => "EnsayoCatedra";
-        public Person docente {get; set;}
-        public Person tutor {get; set; }
+        public Person? docente {get; set;}
+        public Person? tutor {get; set; }
 
 
     }

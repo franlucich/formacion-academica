@@ -54,25 +54,25 @@ namespace ProveedorManagment.Ap.Controllers
 
         [HttpPost]
 
-            public async Task<ActionResult<ProyectoFinalIngenieria>> Create(ProyectoFinalIngenieria proyecto)
+            public async Task<ActionResult<ProyectoFinalIngenieria?>> Create(ProyectoFinalIngenieria proyecto)
             {
-            try
-            {
-                if (proyecto == null)
-                    return BadRequest();
+                try
+                {
+                    if (proyecto == null)
+                        return BadRequest();
 
-                var crearEnsayo = await unitOfWork.proyectoFinalIngenieria.Add(proyecto);
-                await unitOfWork.CompleteAsync();
+                    var crearProyecto = await unitOfWork.proyectoFinalIngenieria.Add(proyecto);
+                    await unitOfWork.CompleteAsync();
 
-                return CreatedAtAction(nameof(GetProId),
-                    new { id = crearEnsayo?.Id }, crearEnsayo);
+                    return CreatedAtAction(nameof(GetFormA),
+                        new { id = crearProyecto?.Id }, crearProyecto);
+                }
+                catch (Exception)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError,
+                        "Error creating new employee record");
+                }
             }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error creating new employee record");
-            }
-        }
 
         [HttpPut("{id}")]
         public async Task<ActionResult<ProyectoFinalIngenieria?>> Modificar(int id, ProyectoFinalIngenieria proyecto)

@@ -32,6 +32,7 @@ namespace appGIUCT.Domain.Repository
              {
                  var result = await gIUCTDbContext.ProyectoFinalIngenieria.AddAsync(proyectoFinalIngenieria); // Utiliza el método AddAsync del contexto de la base de datos para agregar la oferta de manera asincrónica
 
+                await gIUCTDbContext.SaveChangesAsync();
                  return result.Entity;
              }
 

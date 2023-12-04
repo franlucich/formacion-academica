@@ -54,7 +54,7 @@ namespace ProveedorManagment.Ap.Controllers
 
         [HttpPost]
 
-            public async Task<ActionResult<TesinaLicenciatura>> Create(TesinaLicenciatura tesina)
+            public async Task<ActionResult<TesinaLicenciatura?>> Create(TesinaLicenciatura tesina)
             {
             try
             {

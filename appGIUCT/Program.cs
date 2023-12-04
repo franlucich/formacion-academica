@@ -9,8 +9,16 @@ var builder = WebApplication.CreateBuilder(args);
 var host = builder.Host;
 var configuration = builder.Configuration;
 var services = builder.Services;
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy  =>
+                      {
+                          policy.WithOrigins("http://localhost:4200").WithMethods("GET", "POST", "DELETE", "PUT");
+                      });
+});
 
 
 services.AddDbContext<GIUCTDbContext>();
@@ -32,14 +40,9 @@ app.MapControllers();
 
 app.MapGet("/", () => "Hello World!");
 
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();
 
 
-//     //retrieve all the students from the database
-//     foreach (var s in context.Students) {
-//         Console.WriteLine($"First Name: {s.FirstName}, Last Name: {s.LastName}");
-//     }    
-// }
-///////////////////////
 

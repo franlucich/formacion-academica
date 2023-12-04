@@ -54,18 +54,18 @@ namespace ProveedorManagment.Ap.Controllers
 
         [HttpPost]
 
-            public async Task<ActionResult<TesisPosgrado>> Create(TesisPosgrado tesis)
+           [HttpPost]
+
+            public async Task<ActionResult<TesisPosgrado>> Create([FromBody]TesisPosgrado tesis)
             {
             try
             {
                 if (tesis == null)
-                    return BadRequest();
+                    return BadRequest("No match");
 
-                var crearEnsayo = await unitOfWork.tesisPosgrado.Add(tesis);
-                await unitOfWork.CompleteAsync();
-
+                var tesisP = await unitOfWork.tesisPosgrado.Add(tesis);
                 return CreatedAtAction(nameof(GetTesisId),
-                    new { id = crearEnsayo?.Id }, crearEnsayo);
+                    new { id = tesisP.Id }, tesisP);
             }
             catch (Exception)
             {
@@ -73,6 +73,7 @@ namespace ProveedorManagment.Ap.Controllers
                     "Error creating new employee record");
             }
         }
+
 
         [HttpPut("{id}")]
         public async Task<ActionResult<TesisPosgrado?>> Modificar(int id, TesisPosgrado tesis)

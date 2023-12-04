@@ -7,10 +7,9 @@ namespace appGIUCT.Domain.Entities
             fuenteFinanciamiento = "";
             tipo = "";
         }
-        public override string TipoForm => "TesisPosgrado";
-        public Person director {get; set;}
-        public string fuenteFinanciamiento {get; set;}
-        public string tipo {get; set;}
+        public Person? director {get; set;}
+        public string? fuenteFinanciamiento {get; set;}
+        public string? tipo {get; set;}
    
 
     }
