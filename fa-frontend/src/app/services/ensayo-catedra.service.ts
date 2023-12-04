@@ -11,6 +11,9 @@ export class EnsayoCatedraService {
   ensayoCatedra(): Observable<any[]>{
     return this.api.ensayoCatedra();
   }
+  crearEnsayoCatedra(ensayo: any): Observable<any>{
+    return this.api.crearEnsayoCatedra(ensayo)
+  }
   deleteEnsayoCatedra(id: number){
     return this.api.deleteEnsayoCatedra(id)
   }
