@@ -18,14 +18,15 @@ export class DataTableComponent {
 
     @Input() items!: any[];
     @Input() tipoFA!: string;
+ 
 
     constructor(private ensayoCatedraService: EnsayoCatedraService, 
       private tesisPosgradoService: TesisPosgradoService,
       private practicaSupervisadaService: PracticaSupervisadaService,
       private practicaProfesionalizanteService: PracticaProfesionalizanteService ,
       private tesinaLicenciaturaService: TesinaLicenciaturaService,
-      private proyectoFinalIngenieria: ProyectoFinalIngenieriaService
-      ) {}
+      private proyectoFinalIngenieria: ProyectoFinalIngenieriaService){}
+      
     deleteFA(id:number){
     
       switch(this.tipoFA){

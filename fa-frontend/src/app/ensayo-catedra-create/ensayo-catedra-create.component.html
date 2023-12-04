@@ -11,38 +11,41 @@
           <div class="mb-3 row">
             <label for="titulo" class="col-md-4 col-form-label text-md-end text-start">Título</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="titulo" name="titulo" formControlName="titulo">>
+              <input type="text" class="form-control" id="titulo" name="titulo" formControlName="titulo">
             </div>   
           </div>
 
           <div class="mb-3 row">
                   <label for="persona" class="col-md-4 col-form-label text-md-end text-start">Persona</label>
                   <div class="col-md-6">
-                    <select class="form-control" type="dropdown"id="persona" name="persona">
-                      <option selected>Seleccione una persona</option>
-                      <option value="">aaa</option>
+                    <select class="form-control" type="dropdown"id="pkPersona" name="pkPersona" formControlName="pkPersona">
+                      <option selected></option>
+                      <option *ngFor="let persona of personas" value={{persona.id}}>{{persona.apellido}} {{persona.nombre}}</option>
                     </select>
                   </div>   
                 </div>
                 <div class="mb-3 row">
                   <label for="facultad" class="col-md-4 col-form-label text-md-end text-start">Facultad</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" id="facultad" name="facultad">
+                    <select class="form-control" type="dropdown"id="pkFacultad" name="pkFacultad" formControlName="pkFacultad">
+                      <option selected></option>
+                      <option *ngFor="let facultad of facultades" value={{facultad.id}}> {{facultad.nombre}}</option>
+                    </select>
                   </div>   
                 </div>
                 <div class="mb-3 row">
                   <label for="fechaIni" class="col-md-4 col-form-label text-md-end text-start">Fecha de Inicio</label>
                   <div class="col-md-6">
-                    <input type="date" class="form-control" id="fechaIni" name="fechaIni" formControlName="fechaIni">
+                    <input type="date" class="form-control" id="fechaIni" name="fechaIni" formControlName="fechaInicio">
                   </div>   
                 </div>
                 <div class="mb-3 row">
                   <label for="fechaFin" class="col-md-4 col-form-label text-md-end text-start">Fecha de Fin</label>
                   <div class="col-md-6">
-                    <input type="date" class="form-control" id="fechaFin" name="fechaFin">
+                    <input type="date" class="form-control" id="fechaFin" name="fechaFin"  formControlName="fechaFin">
                   </div>   
                 </div>
-                <div class="mb-3 row">
+                <!--<div class="mb-3 row">
                   <label for="pid" class="col-md-4 col-form-label text-md-end text-start">PID</label>
                   <div class="col-md-6">
                     <input type="text" class="form-control" id="pid" name="pid">
@@ -53,11 +56,11 @@
                   <div class="col-md-6">
                     <input type="text" class="form-control" id="iniInves" name="iniInves">
                   </div>   
-                </div>
+                </div>-->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-verde-success">Agregar</button>
+                <button type="submit" class="btn btn-verde-success" data-bs-dismiss="modal">Agregar</button>
               </div>
             </form>
       </div>

@@ -23,7 +23,7 @@ export class ApiService {
     return this.httpClient.get<any[]>(API_URL + "/api/ensayoCatedra");
   }
   crearEnsayoCatedra(ensayo: any): Observable<any>{
-    return this.httpClient.post<any>(API_URL + "/api/crearEnsayoCatedra", ensayo);
+    return this.httpClient.post<any>(API_URL + "/api/ensayoCatedra", ensayo);
   }
   deleteEnsayoCatedra(id: number){
     return this.httpClient.delete(API_URL + '/api/ensayoCatedra/'+ id);
@@ -51,5 +51,11 @@ export class ApiService {
   }
   deleteTesinaLicenciatura(id: number){
     return this.httpClient.delete(API_URL + '/api/TesinaLicenciatura/'+ id);
+  }
+  persona(): Observable<any[]>{
+    return this.httpClient.get<any[]>(API_URL + "/api/general/persona");
+  }
+  facultad(): Observable<any[]>{
+    return this.httpClient.get<any[]>(API_URL + "/api/general/facultad");
   }
 }
